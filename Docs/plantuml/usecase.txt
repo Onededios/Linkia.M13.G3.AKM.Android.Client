@@ -1,0 +1,72 @@
+@startuml
+!theme aws-orange
+:User: as u
+:Admin: as a #blue
+
+u -|> (Register)
+(Register) .....> (By Form)
+(Register) .....> (By Google)
+
+u -|> (Login)
+(Login) .....> (By user and password)
+(Login) .....> (By mail and password)
+(Login) .....> (By Google)
+
+u -|> (View passwords)
+(View passwords) .....> (All Passwords)
+(View passwords) .....> (By Categories)
+(By Categories) .....> (By Category)
+(View passwords) .....> (By Applications)
+(By Applications) .....> (By Application)
+
+a -[#blue]-|> (View passwords)
+
+u -|> (Create password)
+(Create password) .....> (Manually)
+(Create password) .....> (Automatically)
+(Create password) .....> (With A helper)
+
+u -|> (Modify password)
+(Modify password) .....> (Change password)
+(Change password) .....> (Create password)
+(Modify password) .....> (Delete password)
+(Modify password) .....> (Asociate password with an application)
+(Modify password) .....> (Disasociate password by an application)
+(Modify password) .....> (Asociate password with a category)
+(Modify password) .....> (Disasociate password by a category)
+
+a -[#blue]-|> (Change password)
+a -[#blue]-|> (Delete password)
+
+a -[#blue]-|> (View aplications)
+a -[#blue]-|> (Create aplications)
+a -[#blue]-|> (Modify aplications)
+
+u -|> (View aplications)
+(View aplications) .....> (By Application) 
+
+u -|> (View categories)
+(View categories) .....> (By Category)
+
+u -|> (Create category)
+(Create category) -right-|> (Asociate to passwords)
+
+u -|> (Modify category)
+(Modify category) -right-|> (Asociate to passwords)
+(Modify category) -right-|> (Delete category)
+(Modify category) -right-|> (Change category)
+
+a -[#blue]-|> (Configure theme)
+u -|> (Configure theme)
+(Configure theme) .....> (Change to light)
+(Configure theme) .....> (Change to dark)
+
+a -[#blue]-|> (Configure language)
+u -|> (Configure language)
+(Configure language) .....> (Change to ES)
+(Configure language) .....> (Change to EN)
+
+u -|> (Configure reminders and alarms)
+(Configure reminders and alarms) .....> (Toggle outdated password alarm)
+(Configure reminders and alarms) .....> (Toggle blacklisted password alarm)
+@enduml
