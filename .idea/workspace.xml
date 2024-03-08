@@ -5,48 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/proguard-rules.pro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/androidTest/java/com/linkiaM13G3/akmAndroidClient/ExampleInstrumentedTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/MainActivity.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/ui/theme/Color.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/ui/theme/Theme.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/ui/theme/Type.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/ic_launcher_foreground.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/colors.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/strings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/themes.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/xml/backup_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/xml/data_extraction_rules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/test/java/com/linkiaM13G3/akmAndroidClient/ExampleUnitTest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/build.gradle.kts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/gradle.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/gradlew" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/gradlew.bat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,10 +41,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/repos",
+    "last_opened_file_path": "C:/Users/alvar/Desktop/Repos/Linkia.M13.G3.AKM.Android.Client/AKMAndroidClient/app",
     "project.structure.last.edited": "SDKs",
     "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -81,5 +58,28 @@
       <updated>1708786299121</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
