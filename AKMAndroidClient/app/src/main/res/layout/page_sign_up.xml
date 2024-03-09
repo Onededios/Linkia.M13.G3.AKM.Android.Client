@@ -19,7 +19,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
         app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
         app:layout_constraintTop_toTopOf="@+id/dividerHStartForm">
@@ -28,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Personal Info"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputFName"
@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:text="Contact Info"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputMail"
@@ -73,13 +73,6 @@
                 android:inputType="textEmailAddress" />
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
-        <Spinner
-            android:id="@+id/spinnerCountryCode"
-            style="@style/Widget.AppCompat.Spinner.DropDown"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputTelephone"
@@ -98,7 +91,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:text="Account Info"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputUsername"
@@ -108,7 +101,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Username"
+                android:hint="username or mail"
                 android:inputType="text" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -135,19 +128,15 @@
                 android:hint="Re-enter Password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
+        <Button
+            android:id="@+id/buttonSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sign Up"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp" />
     </LinearLayout>
-
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Sign Up"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
-        app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
-        app:layout_constraintTop_toBottomOf="@+id/dividerHEndForm" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/dividerVLeft"

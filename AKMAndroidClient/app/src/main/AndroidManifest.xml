@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         tools:targetApi="31"
         android:theme="@style/Theme.ArmoredKeyManagerAndroidClient">
-        <activity
-            android:name=".Pages.PageMain"
+
+        <activity android:name=".Pages.PageSignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +21,12 @@
             </intent-filter>
         </activity>
 
-<activity android:name=".Pages.PageAppsActivity"/>
-        <activity android:name=".Pages.PagePwdMain"/>
-        <activity android:name=".Pages.PageSavedCredentialListActivity"/>
+        <activity android:name=".Pages.PageSignUp"/>
+
+        <activity android:name=".Pages.PageMain"/>
 
 
     </application>
 
 </manifest>
+
