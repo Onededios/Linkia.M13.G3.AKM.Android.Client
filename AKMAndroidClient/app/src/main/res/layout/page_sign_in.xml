@@ -38,6 +38,7 @@
         app:layout_constraintTop_toBottomOf="@+id/appNameFull" />
 
     <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/usernameOrEmailInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/dividerHBetweenUserInps"
@@ -46,24 +47,27 @@
         app:layout_constraintTop_toTopOf="@+id/dividerHPhotoFromLogin">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editText"
+            android:id="@+id/editTextUsernameOrEmail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:hint="username or mail"
             android:drawableStart="@drawable/outline_boy_24"
             android:drawablePadding="10sp"
             android:inputType="textEmailAddress"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <!-- Definición del TextInputLayout para la contraseña -->
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textInputLayout"
+        android:id="@+id/passwordInputLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/dividerHBottomSignUp"
         app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
         app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
         app:layout_constraintTop_toTopOf="@+id/dividerHBetweenUserInps">
+
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="password"

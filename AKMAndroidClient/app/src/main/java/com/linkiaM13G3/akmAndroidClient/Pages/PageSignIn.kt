@@ -1,5 +1,6 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -13,13 +14,14 @@ class PageSignIn : AppCompatActivity() {
     private lateinit var usernameOrEmailInputLayout: TextInputLayout
     private lateinit var passwordInputLayout: TextInputLayout
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_sign_in)
 
         // Inicializa las vistas
-        usernameOrEmailInputLayout = findViewById(R.id.editText)
-        passwordInputLayout = findViewById(R.id.textInputLayout)
+        usernameOrEmailInputLayout = findViewById(R.id.usernameOrEmailInputLayout)
+        passwordInputLayout = findViewById(R.id.passwordInputLayout)
 
         val signInButton: Button = findViewById(R.id.buttonSignIn)
         val signUpButton: Button = findViewById(R.id.buttonSignUp)

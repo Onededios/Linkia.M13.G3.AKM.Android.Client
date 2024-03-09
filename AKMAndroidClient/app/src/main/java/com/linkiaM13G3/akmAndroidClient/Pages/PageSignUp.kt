@@ -1,12 +1,12 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputLayout
 import com.linkiaM13G3.akmAndroidClient.R
-
 class PageSignUp : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +39,9 @@ class PageSignUp : AppCompatActivity() {
             val isPasswordMatch = validateRePassword(password, rePassword, rePasswordTextInputLayout)
 
             if (isValidFName && isValidLName && isValidEmail && isValidTelephone && isValidUsernameOrEmail && isValidPassword && isPasswordMatch) {
+                val mainIntent = Intent(this, PageMain::class.java)
+                startActivity(mainIntent)
+
                 // Todo está bien, proceder con el registro
             }
         }
@@ -52,10 +55,12 @@ class PageSignUp : AppCompatActivity() {
                 textInputLayout.error = "Field cannot be empty"
                 return false
             }
+
             name.length < 2 || name.length > 50 -> {
                 textInputLayout.error = "Name must be between 2 and 50 characters"
                 return false
             }
+
             !name.all { it.isLetter() || it == '-' || it == '\'' } -> {
                 textInputLayout.error = "Name contains invalid characters"
                 return false
@@ -65,7 +70,7 @@ class PageSignUp : AppCompatActivity() {
 
         return true
     }
-}
+
     private fun validateEmail(email: String, textInputLayout: TextInputLayout): Boolean {
         if (email.isEmpty()) {
             textInputLayout.error = "Email is required"
@@ -83,7 +88,7 @@ class PageSignUp : AppCompatActivity() {
         if (telephone.isEmpty()) {
             textInputLayout.error = "Telephone number is required"
             return false
-        } else if (!telephone.matches(Regex("^[+]?\\d{10,15}$"))) {
+        } else if (!telephone.matches(Regex("^[+]?\\d{9,15}$"))) {
             textInputLayout.error = "Enter a valid telephone number"
             return false
         } else {
@@ -124,3 +129,4 @@ class PageSignUp : AppCompatActivity() {
             return true
         }
     }
+}
