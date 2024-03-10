@@ -29,8 +29,9 @@ class PagePwdMain : AppCompatActivity(){
             val name = findViewById<TextInputEditText>(R.id.eddName).text.toString()
             val emailOrUsername = findViewById<TextInputEditText>(R.id.edUserId).text.toString()
             val password = findViewById<TextInputEditText>(R.id.edUserPassword).text.toString()
+            val notes = findViewById<TextInputEditText>(R.id.notes).text.toString()
 
-            val newCredential = Credential(name, emailOrUsername, password)
+            val newCredential = Credential(name, emailOrUsername, password,notes)
             CredentialManager.credentials.add(newCredential)
 
 

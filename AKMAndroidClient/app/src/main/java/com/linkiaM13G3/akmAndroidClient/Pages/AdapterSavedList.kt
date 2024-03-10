@@ -29,10 +29,11 @@ class AdapterSavedList(
     class SavedListViewHolder(itemView: View, val onItemClicked: (Credential) -> Unit) : RecyclerView.ViewHolder(itemView) {
         private val userNameView: TextView = itemView.findViewById(R.id.tvUserId)
         private val appNameView: TextView = itemView.findViewById(R.id.tvAppName)
-        private val iconView: ImageView = itemView.findViewById(R.id.ivAppIcon)
+
 
         fun bind(credential: Credential) {
             userNameView.text = credential.userName
+            appNameView.text = credential.appName
 
 
             itemView.setOnClickListener {
