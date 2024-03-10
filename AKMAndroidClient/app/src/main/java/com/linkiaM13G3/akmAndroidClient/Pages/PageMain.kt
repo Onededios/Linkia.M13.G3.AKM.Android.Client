@@ -14,7 +14,6 @@ class PageMain : AppCompatActivity() {
 
         val buttonAddApp = findViewById<Button>(R.id.btn_addApp)
         val buttonSavedKeys=findViewById<Button>(R.id.btn_SavedKeys)
-        val buttonCreateTag=findViewById<Button>(R.id.btn_addTag)
 
         buttonAddApp.setOnClickListener {
             val intent = Intent(this, PageAppsActivity::class.java)
@@ -24,9 +23,6 @@ class PageMain : AppCompatActivity() {
                 val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
                 startActivity(intentCredential)
             }
-        buttonCreateTag.setOnClickListener {
-            val intentTag = Intent(this, PagePwdMain::class.java)
-            startActivity(intentTag)
-        }
+
     }
 }

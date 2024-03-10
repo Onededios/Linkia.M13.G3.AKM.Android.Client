@@ -3,18 +3,22 @@ package com.linkiaM13G3.akmAndroidClient.Pages
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.linkiaM13G3.akmAndroidClient.API.Connection
 import com.linkiaM13G3.akmAndroidClient.R
+import kotlinx.coroutines.launch
 
 class PageAppsActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: AdapterAppList
-
+    private var connection = Connection().appService
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,9 +44,13 @@ class PageAppsActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         recyclerView = findViewById(R.id.rvOptions)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        val appsList = getAppsList()
-        adapter = AdapterAppList(appsList, this)
-        recyclerView.adapter = adapter
+
+        lifecycleScope.launch {
+            val newAppsList = connection.getApps()
+            val appsList = getAppsList()
+            adapter = AdapterAppList(appsList, this@PageAppsActivity)
+            recyclerView.adapter = adapter
+        }
     }
 
     private fun setupSearchView() {
