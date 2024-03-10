@@ -14,14 +14,19 @@ class PageMain : AppCompatActivity() {
 
         val buttonAddApp = findViewById<Button>(R.id.btn_addApp)
         val buttonSavedKeys=findViewById<Button>(R.id.btn_SavedKeys)
+        val buttonCreateTag=findViewById<Button>(R.id.btn_addTag)
 
         buttonAddApp.setOnClickListener {
             val intent = Intent(this, PageAppsActivity::class.java)
             startActivity(intent) }
 
             buttonSavedKeys.setOnClickListener {
-                val intents = Intent(this, PageSavedCredentialListActivity::class.java)
-                startActivity(intents)
+                val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
+                startActivity(intentCredential)
             }
+        buttonCreateTag.setOnClickListener {
+            val intentTag = Intent(this, PagePwdMain::class.java)
+            startActivity(intentTag)
+        }
     }
 }

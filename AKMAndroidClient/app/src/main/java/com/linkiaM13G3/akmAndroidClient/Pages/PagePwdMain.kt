@@ -1,8 +1,10 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,21 +18,29 @@ class PagePwdMain : AppCompatActivity(){
         setContentView(R.layout.page_password)
 
         val btnSave = findViewById<Button>(R.id.button)
+        val btnBack= findViewById<Button>(R.id.btn_backArrowpsw)
+
+        btnBack.setOnClickListener {
+            val intentTag = Intent(this, PageAppsActivity::class.java)
+            startActivity(intentTag)
+        }
+
         btnSave.setOnClickListener {
             val name = findViewById<TextInputEditText>(R.id.eddName).text.toString()
             val emailOrUsername = findViewById<TextInputEditText>(R.id.edUserId).text.toString()
             val password = findViewById<TextInputEditText>(R.id.edUserPassword).text.toString()
-            val notes = findViewById<EditText>(R.id.notes).text.toString()
 
-            val pagePwdDDBB = PagePwdDDBB(name, emailOrUsername, password, notes)
-            PagePwdDDBB.PreferencesUtils.saveCredentials(this, pagePwdDDBB)
+            val newCredential = Credential(name, emailOrUsername, password)
+            CredentialManager.credentials.add(newCredential)
 
 
-        val recyclerView = findViewById<RecyclerView>(R.id.rvOptions)
-        recyclerView.layoutManager = LinearLayoutManager(this)
+            Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
 
-            val appName = intent.getStringExtra("APP_NAME_EXTRA")
+            finish()
+        }
+
+
 
 
     }
-}}
+}

@@ -1,138 +1,95 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.linkiaM13G3.akmAndroidClient.R
 
-
 class PageAppsActivity : AppCompatActivity() {
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: AdapterAppList
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_apps_list)
 
+        setupButtons()
+        setupRecyclerView()
+        setupSearchView()
+    }
+
+    private fun setupButtons() {
         val buttonBack = findViewById<Button>(R.id.btn_backArrowpsw)
         buttonBack.setOnClickListener {
-            val intent = Intent(this, PageMain::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, PageMain::class.java))
         }
 
-        // esta linea encuentra el RV en el xml lo asigana a la variable
-        val recyclerView = findViewById<RecyclerView>(R.id.rvOptions)
+        val buttonAddManually = findViewById<Button>(R.id.btn_addManual)
+        buttonAddManually.setOnClickListener {
+            startActivity(Intent(this, PagePwdMain::class.java))
+        }
+    }
 
-        //Aqui asignamos un LinearLayout para posoicionar los elementos en la lista de forma linea,
-        //uno ddebajo de otro
+    private fun setupRecyclerView() {
+        recyclerView = findViewById(R.id.rvOptions)
         recyclerView.layoutManager = LinearLayoutManager(this)
-
-        //establecemos un adaptador para el RV, utilizando la clase AdapterAppList que hemos creado
-        recyclerView.adapter = AdapterAppList(getAppsList(), this)
-
-
+        val appsList = getAppsList()
+        adapter = AdapterAppList(appsList, this)
+        recyclerView.adapter = adapter
     }
 
-    fun onAppClick(appName: String) {
-        // Inicia la actividad KeyList y pasa el nombre de la aplicación como extra
-        val intent = Intent(this, PagePwdMain::class.java)
-        intent.putExtra("APP_NAME_EXTRA", appName)
-        startActivity(intent)
+    private fun setupSearchView() {
+        val searchView = findViewById<SearchView>(R.id.srchView_apps)
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                newText?.let {
+                    adapter.filter(it)
+                }
+                return true
+            }
+        })
     }
+
+
 
     private fun getAppsList(): List<AdapterAppList.AppsList> {
         return listOf(
-            AdapterAppList.AppsList(
-                "Google",
-                "url_to_google_logo",
-                "drawable_name_for_arrow_icon" ,
-               ""
-            ),
-            AdapterAppList.AppsList(
-                "Facebook",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
-            AdapterAppList.AppsList(
-                "Amazon",
-                "url_to_facebook_logo",
-                "drawable_name_for_arrow_icon" ,
-                ""
-
-            ),
+            AdapterAppList.AppsList("Google", R.drawable.logo_google),
+            AdapterAppList.AppsList("Facebook", R.drawable.logo_facebook),
+            AdapterAppList.AppsList("Amazon", R.drawable.logo_amazon),
+            AdapterAppList.AppsList("Apple", R.drawable.logo_apple),
+            AdapterAppList.AppsList("Netflix", R.drawable.logo_netflix),
+            AdapterAppList.AppsList("Airbnb", R.drawable.logo_airbnb),
+            AdapterAppList.AppsList("Uber", R.drawable.logo_uber),
+            AdapterAppList.AppsList("Spotify", R.drawable.logo_spotify),
+            AdapterAppList.AppsList("Samsung", R.drawable.logo_samsung),
+            AdapterAppList.AppsList("Huawei", R.drawable.logo_huawei),
+            AdapterAppList.AppsList("PlayStation", R.drawable.logo_sony),
+            AdapterAppList.AppsList("Xbox", R.drawable.logo_xbox),
+            AdapterAppList.AppsList("TikTok", R.drawable.logo_tiktok),
+            AdapterAppList.AppsList("YouTube", R.drawable.logo_youtube),
+            AdapterAppList.AppsList("Instagram", R.drawable.logo_instagram)
         )
     }
+
+    fun onAppClick(appName: String) {
+        val intent = Intent(this, PagePwdMain::class.java).apply {
+            putExtra("APP_NAME_EXTRA", appName)
+        }
+        startActivity(intent)
+    }
 }
+
+
+
