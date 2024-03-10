@@ -14,13 +14,13 @@ import com.linkiaM13G3.akmAndroidClient.R
 
 class PagePwdMain : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper // Añade esto
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_password)
 
-        databaseHelper = DatabaseHelper(this) // Inicializa esto
+        databaseHelper = DatabaseHelper(this)
 
         val btnSave = findViewById<Button>(R.id.button)
         val btnBack = findViewById<Button>(R.id.btn_backArrowpsw)
@@ -37,11 +37,11 @@ class PagePwdMain : AppCompatActivity() {
             val notes = findViewById<TextInputEditText>(R.id.notes).text.toString().trim()
 
             if (name.isNotEmpty() && emailOrUsername.isNotEmpty() && password.isNotEmpty()) {
-                // Usamos databaseHelper para insertar la nueva credencial
+
                 val result = databaseHelper.insertCredential(name, emailOrUsername, password, notes)
-                if (result != -1L) { // Verifica si la inserción fue exitosa
+                if (result != -1L) {
                     Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
-                    finish() // Cierra la actividad y regresa a la anterior
+                    finish()
                 } else {
                     Toast.makeText(this, "Error saving credentials", Toast.LENGTH_SHORT).show()
                 }

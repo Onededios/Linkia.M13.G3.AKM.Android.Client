@@ -18,6 +18,7 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_EMAIL_OR_USERNAME = "email_or_username"
         private const val COLUMN_PASSWORD = "password"
         private const val COLUMN_NOTES = "notes"
+        private const val COLUMN_USER_ID = "user_id"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -26,7 +27,8 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
                 "$COLUMN_NAME TEXT," +
                 "$COLUMN_EMAIL_OR_USERNAME TEXT," +
                 "$COLUMN_PASSWORD TEXT," +
-                "$COLUMN_NOTES TEXT)")
+                "$COLUMN_NOTES TEXT)" +
+                "$COLUMN_USER_ID INTEGER) ")
         db.execSQL(CREATE_TABLE)
     }
 
@@ -35,21 +37,24 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         onCreate(db)
     }
 
-    fun insertCredential(name: String, emailOrUsername: String, password: String, notes: String): Long {
+    fun insertCredential(name: String, emailOrUsername: String, password: String, notes: String, userId: Int): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_NAME, name)
             put(COLUMN_EMAIL_OR_USERNAME, emailOrUsername)
             put(COLUMN_PASSWORD, password)
             put(COLUMN_NOTES, notes)
+            put(COLUMN_USER_ID, userId)
         }
         return db.insert(TABLE_NAME, null, values)
     }
 
-    fun getAllCredentials(): List<Credential> {
+    fun getAllCredentials(userId: Int): List<Credential> {
         val credentialsList = mutableListOf<Credential>()
         val db = readableDatabase
-        val cursor: Cursor? = db.query(TABLE_NAME, null, null, null, null, null, null)
+        val selection = "$COLUMN_USER_ID = ?"
+        val selectionArgs = arrayOf(userId.toString())
+        val cursor: Cursor? = db.query(TABLE_NAME, null, selection, selectionArgs, null, null, null)
         cursor?.use {
             while (it.moveToNext()) {
                 val id = it.getInt(it.getColumnIndexOrThrow(COLUMN_ID))
@@ -63,19 +68,18 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         return credentialsList
     }
 
-    fun updateCredential(credentialId: Int, newPassword: String) {
-        val db = this.writableDatabase // Obtén la base de datos en modo escritura
 
-        // Crea un nuevo mapa de valores, donde los nombres de las columnas son las keys
+
+    fun updateCredential(credentialId: Int, newPassword: String) {
+        val db = this.writableDatabase
+
         val values = ContentValues().apply {
-            put(COLUMN_PASSWORD, newPassword) // Añade la nueva contraseña al ContentValues
+            put(COLUMN_PASSWORD, newPassword)
         }
 
-        // Define el criterio de selección (WHERE clause)
-        val selection = "$COLUMN_ID = ?" // Indica que el criterio de selección es el ID de la credencial
-        val selectionArgs = arrayOf(credentialId.toString()) // Argumentos para el criterio de selección, en este caso el ID de la credencial
+        val selection = "$COLUMN_ID = ?"
+        val selectionArgs = arrayOf(credentialId.toString())
 
-        // Realiza la actualización en la tabla, devolviendo el número de filas afectadas
         db.update(
             TABLE_NAME,
             values,
@@ -84,4 +88,5 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         )
     }
 }
+
 

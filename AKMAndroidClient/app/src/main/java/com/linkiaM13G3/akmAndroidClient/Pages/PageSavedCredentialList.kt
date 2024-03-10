@@ -18,16 +18,16 @@ import com.linkiaM13G3.akmAndroidClient.R
 
 class PageSavedCredentialListActivity : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper // Mueve la declaración aquí
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pages_pwd_list)
-        databaseHelper = DatabaseHelper(this) // Inicializa aquí
+        databaseHelper = DatabaseHelper(this)
 
         val btnBack = findViewById<Button>(R.id.btn_back)
         btnBack.setOnClickListener {
-            val intentTag = Intent(this, PageAppsActivity::class.java)
+            val intentTag = Intent(this, PageMain::class.java)
             startActivity(intentTag)
         }
 
@@ -39,7 +39,7 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
     }
 
     private fun getAllCredentials(): List<Credential> {
-        return databaseHelper.getAllCredentials() // Asegúrate de implementar este método en DatabaseHelper
+        return databaseHelper.getAllCredentials()
     }
 
     private fun showCustomDialog(credential: Credential) {
@@ -54,7 +54,7 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
 
         usernameTextView.text = credential.name
         etPassword.setText(credential.password)
-        etPassword.keyListener = null // Disable editing of password field
+        etPassword.keyListener = null
 
         fun cambiarVisibilidadCampos(isVisible: Boolean) {
             newPasswordInputLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
