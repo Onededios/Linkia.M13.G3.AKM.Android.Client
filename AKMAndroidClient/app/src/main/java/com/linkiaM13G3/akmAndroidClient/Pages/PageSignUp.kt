@@ -16,7 +16,7 @@ class PageSignUp : AppCompatActivity() {
             android.R.layout.simple_spinner_dropdown_item,
             resources.getStringArray(R.array.country_codes)
         )
-    }
+    }//cambios
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_sign_up)
