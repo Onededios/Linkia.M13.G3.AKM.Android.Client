@@ -3,14 +3,12 @@ package com.linkiaM13G3.akmAndroidClient.Pages
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.linkiaM13G3.akmAndroidClient.R
 
-
 class AdapterSavedList(
-    private val credentialsList: MutableList<Credential>,
+    private val credentialsList: List<Credential>,
     private val onItemClicked: (Credential) -> Unit
 ) : RecyclerView.Adapter<AdapterSavedList.SavedListViewHolder>() {
 
@@ -30,11 +28,9 @@ class AdapterSavedList(
         private val userNameView: TextView = itemView.findViewById(R.id.tvUserId)
         private val appNameView: TextView = itemView.findViewById(R.id.tvAppName)
 
-
         fun bind(credential: Credential) {
-            userNameView.text = credential.userName
-            appNameView.text = credential.appName
-
+            userNameView.text = credential.emailOrUsername
+            appNameView.text = credential.name
 
             itemView.setOnClickListener {
                 onItemClicked(credential)
@@ -42,3 +38,4 @@ class AdapterSavedList(
         }
     }
 }
+
