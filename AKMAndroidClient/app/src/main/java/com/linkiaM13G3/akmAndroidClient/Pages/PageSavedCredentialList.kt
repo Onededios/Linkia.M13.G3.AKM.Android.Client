@@ -46,8 +46,10 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
         val usernameTextView = dialogView.findViewById<MaterialTextView>(R.id.etUsername)
         val etPassword = dialogView.findViewById<TextInputEditText>(R.id.etPassword)
-        val newPasswordInputLayout = dialogView.findViewById<TextInputLayout>(R.id.newPasswordInputLayout)
-        val confNewPasswordInputLayout = dialogView.findViewById<TextInputLayout>(R.id.confNewPasswordInputLayout)
+        val newPasswordInputLayout =
+            dialogView.findViewById<TextInputLayout>(R.id.newPasswordInputLayout)
+        val confNewPasswordInputLayout =
+            dialogView.findViewById<TextInputLayout>(R.id.confNewPasswordInputLayout)
         val etNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etNewPassword)
         val etconNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etconNewPassword)
         val editPwdSwitch = dialogView.findViewById<SwitchMaterial>(R.id.editPwd)
@@ -78,7 +80,15 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
 
                 if (newPassword == confirmNewPassword) {
                     databaseHelper.updateCredential(credential.id, newPassword)
+                    Toast.makeText(this, "Password updated successfully", Toast.LENGTH_SHORT).show()
+
+                    // Cerrar el diálogo
                     dialog.dismiss()
+
+                    // Volver a cargar la actividad para mostrar los cambios
+                    val intent = Intent(this, PageSavedCredentialListActivity::class.java)
+                    startActivity(intent)
+                    finish()
                 } else {
                     Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
                 }
