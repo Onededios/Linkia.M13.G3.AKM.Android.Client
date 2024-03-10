@@ -64,18 +64,18 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
     }
 
     fun updateCredential(credentialId: Int, newPassword: String) {
-        val db = this.writableDatabase // Obtén la base de datos en modo escritura
+        val db = this.writableDatabase
 
-        // Crea un nuevo mapa de valores, donde los nombres de las columnas son las keys
+
         val values = ContentValues().apply {
-            put(COLUMN_PASSWORD, newPassword) // Añade la nueva contraseña al ContentValues
+            put(COLUMN_PASSWORD, newPassword)
         }
 
-        // Define el criterio de selección (WHERE clause)
-        val selection = "$COLUMN_ID = ?" // Indica que el criterio de selección es el ID de la credencial
-        val selectionArgs = arrayOf(credentialId.toString()) // Argumentos para el criterio de selección, en este caso el ID de la credencial
 
-        // Realiza la actualización en la tabla, devolviendo el número de filas afectadas
+        val selection = "$COLUMN_ID = ?"
+        val selectionArgs = arrayOf(credentialId.toString())
+
+
         db.update(
             TABLE_NAME,
             values,
