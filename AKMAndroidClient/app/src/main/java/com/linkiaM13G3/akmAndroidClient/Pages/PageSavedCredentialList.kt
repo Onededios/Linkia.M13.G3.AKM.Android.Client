@@ -1,38 +1,78 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
-import android.content.Context
+import android.app.AlertDialog
+import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.linkiaM13G3.akmAndroidClient.Pages.PagePwdDDBB.PreferencesUtils.getAllCredentials
+import com.google.android.material.switchmaterial.SwitchMaterial
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.textview.MaterialTextView
 import com.linkiaM13G3.akmAndroidClient.R
-
 
 class PageSavedCredentialListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.page_apps_list)
+        setContentView(R.layout.pages_pwd_list)
 
-        val recyclerView: RecyclerView = findViewById(R.id.rvOptions)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = AdapterSavedList(getSavedCredentials(this))
-    }
-    fun getSavedCredentials(context: Context): List<SavedCredential> {
-        // Obtiene las credenciales guardadas, este código depende de cómo guardes los datos
-        val sharedPreferences = context.getSharedPreferences("MySecurePrefs", Context.MODE_PRIVATE)
-        val allEntries = sharedPreferences.all
-        val savedCredentialsList = mutableListOf<SavedCredential>()
-
-        allEntries.forEach { entry ->
-            // Aquí asumimos que tienes un formato específico para las claves y los valores en SharedPreferences
-            if (entry.key.contains("NAME_KEY") && entry.value is String) {
-                val appName = entry.value as String
-                val userNameKey = entry.key.replace("NAME_KEY", "EMAIL_OR_USERNAME_KEY")
-                val userName = sharedPreferences.getString(userNameKey, "") ?: ""
-                savedCredentialsList.add(SavedCredential(icon = androidx.appcompat.R.drawable.abc_cab_background_top_mtrl_alpha, userName = userName, appName = appName))
-            }
+        val btnBack = findViewById<Button>(R.id.btn_back)
+        btnBack.setOnClickListener {
+            val intentTag = Intent(this, PageAppsActivity::class.java)
+            startActivity(intentTag)
         }
-        return savedCredentialsList
+
+        val recyclerView: RecyclerView = findViewById(R.id.rvListPwd)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = AdapterSavedList(CredentialManager.credentials) { credential ->
+            showCustomDialog(credential)
+        }
+    }
+
+    private fun showCustomDialog(credential: Credential) {
+        val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
+        val usernameTextView = dialogView.findViewById<MaterialTextView>(R.id.etUsername)
+        val passwordInputLayout = dialogView.findViewById<TextInputLayout>(R.id.passwordInputLayout)
+        val etPassword = dialogView.findViewById<TextInputEditText>(R.id.etPassword)
+        val newPasswordInputLayout = dialogView.findViewById<TextInputLayout>(R.id.newPasswordInputLayout)
+        val confNewPasswordInputLayout = dialogView.findViewById<TextInputLayout>(R.id.confNewPasswordInputLayout)
+        val etNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etNewPassword)
+        val etconNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etconNewPassword)
+        val editPwdSwitch = dialogView.findViewById<SwitchMaterial>(R.id.editPwd)
+
+        usernameTextView.text = credential.userName
+        etPassword.setText(credential.userPwd)
+        etPassword.keyListener = null  // Disable editing of password field
+
+        fun cambiarVisibilidadCampos(isVisible: Boolean) {
+            newPasswordInputLayout.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
+            confNewPasswordInputLayout.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
+            etNewPassword.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
+            etconNewPassword.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
+        }
+
+        // Set initial visibility
+        cambiarVisibilidadCampos(false)
+
+        val customDialog = AlertDialog.Builder(this)
+            .setView(dialogView)
+            .create()
+
+        dialogView.findViewById<Button>(R.id.btnSave).setOnClickListener {
+            customDialog.dismiss()
+        }
+
+        editPwdSwitch.setOnCheckedChangeListener { _, isChecked ->
+            cambiarVisibilidadCampos(isChecked)
+        }
+
+        customDialog.show()
     }
 }
+
+
+
