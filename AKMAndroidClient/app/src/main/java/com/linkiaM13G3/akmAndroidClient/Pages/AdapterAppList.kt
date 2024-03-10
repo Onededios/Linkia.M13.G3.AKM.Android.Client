@@ -6,27 +6,27 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.linkiaM13G3.akmAndroidClient.Entities.App
 import com.linkiaM13G3.akmAndroidClient.R
 
 class AdapterAppList(
-
-
-
-    val fullAppsList: List<AppsList>,
-    val listener: PageAppsActivity,
-    var appsList: List<AppsList> = fullAppsList.toList(),
+    private val fullAppsList: List<App>?,
+    private val listener: PageAppsActivity,
+    private var appsList: List<App>? = fullAppsList?.toList(),
 ) : RecyclerView.Adapter<AdapterAppList.AppsListHolder>() {
 
-    public data class AppsList(
+    data class AppsList(
         val appName: String,
-        val appsIcon :Int,
-
-        )
-
+        val appsIcon: Int,
+    )
 
     class AppsListHolder(view: View) : RecyclerView.ViewHolder(view) {
         val textViewAppName: TextView = view.findViewById(R.id.tvAppname)
         val imageViewLogo: ImageView = view.findViewById(R.id.ivAppIcon)
+    }
+
+    interface OnAppClickListener {
+        fun onAppClick(appName: String?)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppsListHolder {
@@ -35,31 +35,31 @@ class AdapterAppList(
     }
 
     override fun onBindViewHolder(holder: AppsListHolder, position: Int) {
-        val appItem = appsList[position]
-        holder.textViewAppName.text = appItem.appName
-        holder.imageViewLogo.setImageResource(appItem.appsIcon)
+        val appItem = appsList?.get(position)
+        holder.textViewAppName.text = appItem?.name
+        appItem?.icon?.let { holder.imageViewLogo.setImageResource(it) }
         holder.itemView.setOnClickListener {
-            listener.onAppClick(appItem.appName)
+            listener.onAppClick(appItem?.name)
         }
     }
 
-    override fun getItemCount(): Int = appsList.size
+    override fun getItemCount(): Int {
+        return appsList?.size ?: 0
+    }
 
     fun filter(queryText: String) {
         appsList = if (queryText.isEmpty()) {
             fullAppsList
         } else {
-            fullAppsList.filter {
-                it.appName.contains(queryText, ignoreCase = true)
+            fullAppsList?.filter {
+                it.name.contains(queryText, ignoreCase = true)
             }
         }
         notifyDataSetChanged()
     }
-
-    interface OnAppClickListener {
-        fun onAppClick(appName: String)
-    }
 }
 
-
+private fun ImageView.setImageResource(icon: String?) {
+    setImageResource(R.drawable.logo_google)
+}
 

@@ -1,6 +1,6 @@
 package com.linkiaM13G3.akmAndroidClient.Entities
 
-abstract class User : Entity() {
+class User : Entity() {
     lateinit var first_name: String
     lateinit var last_name: String
     lateinit var email: String

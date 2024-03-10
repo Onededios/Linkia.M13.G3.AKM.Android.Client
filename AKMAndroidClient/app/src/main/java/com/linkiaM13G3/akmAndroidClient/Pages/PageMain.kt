@@ -1,10 +1,17 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import AppClient
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.linkiaM13G3.akmAndroidClient.R
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.Dispatcher
 
 class PageMain : AppCompatActivity() {
 
@@ -23,6 +30,11 @@ class PageMain : AppCompatActivity() {
                 val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
                 startActivity(intentCredential)
             }
+    }
 
+    private suspend fun fetchApps() {
+        val appClient = AppClient()
+        val apps = withContext(Dispatchers.IO) {appClient.fetchApps()}
+        Log.d("Test", apps.toString())
     }
 }
