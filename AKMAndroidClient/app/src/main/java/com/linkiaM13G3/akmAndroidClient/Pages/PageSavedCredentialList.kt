@@ -44,9 +44,11 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
         val etconNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etconNewPassword)
         val editPwdSwitch = dialogView.findViewById<SwitchMaterial>(R.id.editPwd)
 
+
         usernameTextView.text = credential.userName
+
         etPassword.setText(credential.userPwd)
-        etPassword.keyListener = null  // Disable editing of password field
+        etPassword.keyListener = null
 
         fun cambiarVisibilidadCampos(isVisible: Boolean) {
             newPasswordInputLayout.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
@@ -55,7 +57,6 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
             etconNewPassword.visibility = if (isVisible) TextView.VISIBLE else TextView.GONE
         }
 
-        // Set initial visibility
         cambiarVisibilidadCampos(false)
 
         val customDialog = AlertDialog.Builder(this)

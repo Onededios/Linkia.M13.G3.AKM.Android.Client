@@ -17,8 +17,8 @@
         <Button
             android:id="@+id/btnSave"
             style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="105dp"
-            android:layout_height="43dp"
+            android:layout_width="115dp"
+            android:layout_height="48dp"
             android:text="Save"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -26,19 +26,30 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.971" />
 
+        <TextView
+            android:id="@+id/notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.457"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.692" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/etUsername"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="331dp"
-            android:layout_height="41dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:hint="Username or Email"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
+            app:layout_constraintVertical_bias="0.132" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/passwordInputLayout"
@@ -73,26 +84,26 @@
             android:id="@+id/newPasswordInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="352dp"
-            android:layout_height="43dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             app:endIconMode="password_toggle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.65"
-            android:visibility="gone" >
+            app:layout_constraintVertical_bias="0.65">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:id="@+id/etNewPassword"
                 android:layout_width="333dp"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:hint="New Password"
                 android:inputType="textPassword"
+                android:visibility="gone"
                 tools:layout_editor_absoluteX="27dp"
                 tools:layout_editor_absoluteY="284dp"
-                android:visibility="gone"
 
                 />
         </com.google.android.material.textfield.TextInputLayout>
@@ -101,12 +112,13 @@
         <com.google.android.material.switchmaterial.SwitchMaterial
             android:id="@+id/editPwd"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-            android:layout_width="173dp"
-            android:layout_height="45dp"
+            android:layout_width="206dp"
+            android:layout_height="53dp"
             android:text="Edit Password"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.50"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -115,49 +127,37 @@
             android:layout_width="95dp"
             android:layout_height="22dp"
             android:text="User ID"
-            android:textSize="16sp"
+            android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.058" />
-
-        <TextView
-            android:id="@+id/tvpwd2"
-            android:layout_width="96dp"
-            android:layout_height="27dp"
-            android:text="Password"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.123"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.181" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/confNewPasswordInputLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
             android:layout_width="352dp"
-            android:layout_height="43dp"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
             app:endIconMode="password_toggle"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.742"
-            android:visibility="gone">
+
+            app:layout_constraintVertical_bias="0.78">
 
             <com.google.android.material.textfield.TextInputEditText
 
                 android:id="@+id/etconNewPassword"
                 android:layout_width="333dp"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:hint="Confirm New Password"
                 android:inputType="textPassword"
-                android:visibility="gone"/>
+                android:visibility="gone" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
