@@ -1,5 +1,6 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -13,20 +14,35 @@ class PageMain : AppCompatActivity() {
         setContentView(R.layout.page_main)
 
         val buttonAddApp = findViewById<Button>(R.id.btn_addApp)
-        val buttonSavedKeys=findViewById<Button>(R.id.btn_SavedKeys)
-        val buttonCreateTag=findViewById<Button>(R.id.btn_addTag)
+        val buttonSavedKeys = findViewById<Button>(R.id.btn_SavedKeys)
+        val buttonExit = findViewById<Button>(R.id.exit)
 
         buttonAddApp.setOnClickListener {
             val intent = Intent(this, PageAppsActivity::class.java)
-            startActivity(intent) }
-
-            buttonSavedKeys.setOnClickListener {
-                val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
-                startActivity(intentCredential)
-            }
-        buttonCreateTag.setOnClickListener {
-            val intentTag = Intent(this, PagePwdMain::class.java)
-            startActivity(intentTag)
+            startActivity(intent)
         }
+
+        buttonSavedKeys.setOnClickListener {
+            val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
+            startActivity(intentCredential)
+        }
+
+        buttonExit.setOnClickListener {
+            logoutUser()
+        }
+    }
+
+    private fun logoutUser() {
+
+        val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("userId")
+        editor.apply()
+
+
+        val intent = Intent(this, PageSignIn::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }

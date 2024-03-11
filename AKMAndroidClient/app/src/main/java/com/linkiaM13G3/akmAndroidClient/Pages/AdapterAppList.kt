@@ -6,22 +6,20 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+
 import com.linkiaM13G3.akmAndroidClient.R
+import kotlinx.coroutines.CoroutineScope
 
 class AdapterAppList(
-
-
-
-    val fullAppsList: List<AppsList>,
-    val listener: PageAppsActivity,
-    var appsList: List<AppsList> = fullAppsList.toList(),
+    private val fullAppsList: List<AppsList>,
+    private val listener: OnAppClickListener
 ) : RecyclerView.Adapter<AdapterAppList.AppsListHolder>() {
-
-    public data class AppsList(
-        val appName: String,
-        val appsIcon :Int,
-
-        )
+    private var currentList: List<AppsList> = fullAppsList
+    data class AppsList(
+        val name: String,
+        val icon: Int,
+        val id: String
+    )
 
 
     class AppsListHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -35,31 +33,27 @@ class AdapterAppList(
     }
 
     override fun onBindViewHolder(holder: AppsListHolder, position: Int) {
-        val appItem = appsList[position]
-        holder.textViewAppName.text = appItem.appName
-        holder.imageViewLogo.setImageResource(appItem.appsIcon)
+        val appItem = fullAppsList[position]
+        holder.textViewAppName.text = appItem.name
+        holder.imageViewLogo.setImageResource(appItem.icon) //
+
         holder.itemView.setOnClickListener {
-            listener.onAppClick(appItem.appName)
+            listener.onAppClick(appItem.name, appItem.id)
         }
     }
-
-    override fun getItemCount(): Int = appsList.size
-
     fun filter(queryText: String) {
-        appsList = if (queryText.isEmpty()) {
+        currentList = if (queryText.isEmpty()) {
             fullAppsList
         } else {
             fullAppsList.filter {
-                it.appName.contains(queryText, ignoreCase = true)
+                it.name.contains(queryText, ignoreCase = true)
             }
         }
         notifyDataSetChanged()
     }
+    override fun getItemCount(): Int = currentList.size
 
     interface OnAppClickListener {
-        fun onAppClick(appName: String)
+        fun onAppClick(appName: String, appId: String)
     }
 }
-
-
-

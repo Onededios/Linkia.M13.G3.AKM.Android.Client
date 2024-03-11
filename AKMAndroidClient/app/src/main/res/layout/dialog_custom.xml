@@ -14,18 +14,6 @@
         tools:layout_editor_absoluteY="15dp">
 
 
-        <Button
-            android:id="@+id/btnSave"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="115dp"
-            android:layout_height="48dp"
-            android:text="Save"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.971" />
-
         <TextView
             android:id="@+id/notes"
             android:layout_width="wrap_content"
