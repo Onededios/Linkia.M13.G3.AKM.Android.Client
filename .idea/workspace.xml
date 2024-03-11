@@ -9,14 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="cambios para el loggin y la bbdd">
+    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="cambios para el loggin y la bbdd 2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/DatabaseHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PagePwdMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PagePwdMain.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_main.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +166,14 @@
       <option name="project" value="LOCAL" />
       <updated>1710156653179</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="cambios para el loggin y la bbdd 2">
+      <created>1710173123518</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1710173123518</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -198,6 +201,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cambios para el loggin y la bbdd" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambios para el loggin y la bbdd" />
+    <MESSAGE value="cambios para el loggin y la bbdd 2" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios para el loggin y la bbdd 2" />
   </component>
 </project>
