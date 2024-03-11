@@ -149,16 +149,15 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
         val db = this.readableDatabase
         var userId = -1
 
-        // Aquí, asumimos que la columna para username y email es la misma. Si tienes columnas separadas,
-        // necesitarás ajustar la consulta SQL de acuerdo a tu esquema de base de datos.
+
         val cursor = db.query(
-                TABLE_USERS, // La tabla a consultar
-                arrayOf(COLUMN_USER_ID), // Las columnas a retornar
-                "$COLUMN_USER_EMAIL = ? AND $COLUMN_USER_PASSWORD = ?", // La cláusula WHERE
-                arrayOf(emailOrUsername, password), // Los valores para la cláusula WHERE
-                null, // group by
-                null, // having
-                null  // order by
+                TABLE_USERS,
+                arrayOf(COLUMN_USER_ID),
+                "$COLUMN_USER_EMAIL = ? AND $COLUMN_USER_PASSWORD = ?",
+                arrayOf(emailOrUsername, password),
+                null,
+                null,
+                null
         )
 
         if (cursor.moveToFirst()) {

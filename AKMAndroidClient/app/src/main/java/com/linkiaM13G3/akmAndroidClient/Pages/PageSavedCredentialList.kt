@@ -34,7 +34,7 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
         }
 
         val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
-        val userId = sharedPreferences.getInt("userId", -1) // Utiliza un valor predeterminado que indique "no encontrado"
+        val userId = sharedPreferences.getInt("userId", -1)
 
         val recyclerView: RecyclerView = findViewById(R.id.rvListPwd)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -47,15 +47,15 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
     private fun showCustomDialog(app: App) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
 
-        //val appNameTextView = dialogView.findViewById<TextView>(R.id.notes) // Asegurarse que este ID esté correcto según el layout.
-        val appUsernameEmailTextView = dialogView.findViewById<TextView>(R.id.etUsername) // Asegurarse de que este ID esté correcto.
-        val appPasswordEditText = dialogView.findViewById<TextInputEditText>(R.id.etPassword) // Asegurarse de que este ID esté correcto.
 
-        // appNameTextView.text = app.name
+        val appUsernameEmailTextView = dialogView.findViewById<TextView>(R.id.etUsername)
+        val appPasswordEditText = dialogView.findViewById<TextInputEditText>(R.id.etPassword)
+
+
         appUsernameEmailTextView.text = app.usernameOrEmail
         appPasswordEditText.setText(app.password)
 
-        // Switch para editar contraseña
+
         val editPasswordSwitch = dialogView.findViewById<SwitchMaterial>(R.id.editPwd)
         editPasswordSwitch.setOnCheckedChangeListener { _, isChecked ->
             cambiarVisibilidadCampos(dialogView, isChecked)
@@ -96,7 +96,7 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
     inner class AdapterApps(private val appsList: List<App>, private val onAppClick: (App) -> Unit) : RecyclerView.Adapter<AdapterApps.AppViewHolder>() {
 
         inner class AppViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val appNameTextView: TextView = view.findViewById(R.id.tvAppname) // Asegúrate de que este ID esté correcto según tu item_apps.xml
+            val appNameTextView: TextView = view.findViewById(R.id.tvAppname)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
