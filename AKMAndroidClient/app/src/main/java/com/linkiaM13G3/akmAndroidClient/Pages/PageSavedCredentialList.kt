@@ -1,11 +1,14 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
 import android.app.AlertDialog
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,90 +18,72 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.textview.MaterialTextView
 import com.linkiaM13G3.akmAndroidClient.R
-
+import com.linkiaM13G3.akmAndroidClient.Pages.DatabaseHelper.App
 class PageSavedCredentialListActivity : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper // Mueve la declaración aquí
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pages_pwd_list)
-        databaseHelper = DatabaseHelper(this) // Inicializa aquí
+        databaseHelper = DatabaseHelper.getInstance(this)
 
         val btnBack = findViewById<Button>(R.id.btn_back)
         btnBack.setOnClickListener {
-            val intentTag = Intent(this, PageAppsActivity::class.java)
-            startActivity(intentTag)
+            startActivity(Intent(this, PageAppsActivity::class.java))
         }
+        val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", -1) // Utiliza un valor predeterminado que indique "no encontrado"
 
         val recyclerView: RecyclerView = findViewById(R.id.rvListPwd)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = AdapterSavedList(getAllCredentials()) { credential ->
-            showCustomDialog(credential)
+// Asegúrate de usar el método correcto y pasar el userId
+        recyclerView.adapter = AdapterApps(databaseHelper.getAllAppsByUserId(userId)) { app ->
+            showCustomDialog(app)
         }
     }
 
-    private fun getAllCredentials(): List<Credential> {
-        return databaseHelper.getAllCredentials() // Asegúrate de implementar este método en DatabaseHelper
-    }
-
-    private fun showCustomDialog(credential: Credential) {
+    private fun showCustomDialog(app: App) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
-        val usernameTextView = dialogView.findViewById<MaterialTextView>(R.id.etUsername)
-        val etPassword = dialogView.findViewById<TextInputEditText>(R.id.etPassword)
-        val newPasswordInputLayout =
-            dialogView.findViewById<TextInputLayout>(R.id.newPasswordInputLayout)
-        val confNewPasswordInputLayout =
-            dialogView.findViewById<TextInputLayout>(R.id.confNewPasswordInputLayout)
-        val etNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etNewPassword)
-        val etconNewPassword = dialogView.findViewById<TextInputEditText>(R.id.etconNewPassword)
-        val editPwdSwitch = dialogView.findViewById<SwitchMaterial>(R.id.editPwd)
 
-        usernameTextView.text = credential.name
-        etPassword.setText(credential.password)
-        etPassword.keyListener = null // Disable editing of password field
+        // Se asume que "notes" es donde quieres mostrar el nombre de la app.
+        val appNameTextView = dialogView.findViewById<TextView>(R.id.notes) // Asumiendo que 'notes' es un TextView.
+        val appUsernameEmailTextView = dialogView.findViewById<MaterialTextView>(R.id.etUsername) // Asumiendo que es un MaterialTextView o cambia a TextView si es necesario.
+        val appPasswordEditText = dialogView.findViewById<TextInputEditText>(R.id.etPassword) // Asumiendo que 'etPassword' está dentro de 'passwordInputLayout' y es editable.
 
-        fun cambiarVisibilidadCampos(isVisible: Boolean) {
-            newPasswordInputLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
-            confNewPasswordInputLayout.visibility = if (isVisible) View.VISIBLE else View.GONE
-            etNewPassword.visibility = if (isVisible) View.VISIBLE else View.GONE
-            etconNewPassword.visibility = if (isVisible) View.VISIBLE else View.GONE
-        }
 
-        // Set initial visibility
-        cambiarVisibilidadCampos(false)
 
-        editPwdSwitch.setOnCheckedChangeListener { _, isChecked ->
-            cambiarVisibilidadCampos(isChecked)
-        }
+        // Configurar los campos del diálogo con los detalles de la app.
+        appNameTextView.text = app.name
+        appUsernameEmailTextView.text = app.usernameOrEmail
+        appPasswordEditText.setText(app.password) // Establecer texto directamente.
 
         val customDialog = AlertDialog.Builder(this)
-            .setView(dialogView)
-            .setPositiveButton("Save") { dialog, _ ->
-                val newPassword = etNewPassword.text.toString()
-                val confirmNewPassword = etconNewPassword.text.toString()
-
-                if (newPassword == confirmNewPassword) {
-                    databaseHelper.updateCredential(credential.id, newPassword)
-                    Toast.makeText(this, "Password updated successfully", Toast.LENGTH_SHORT).show()
-
-                    // Cerrar el diálogo
-                    dialog.dismiss()
-
-                    // Volver a cargar la actividad para mostrar los cambios
-                    val intent = Intent(this, PageSavedCredentialListActivity::class.java)
-                    startActivity(intent)
-                    finish()
-                } else {
-                    Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
-                }
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.cancel()
-            }
-            .create()
+                .setView(dialogView)
+                .setPositiveButton("Close", null) // Solo necesitas un botón para cerrar el diálogo.
+                .create()
 
         customDialog.show()
     }
-}
+    inner class AdapterApps(private val appsList: List<App>, private val onAppClick: (App) -> Unit) : RecyclerView.Adapter<AdapterApps.AppViewHolder>() {
 
+        inner class AppViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val appNameTextView: TextView = view.findViewById(R.id.tvAppname) // Asegúrate de que este ID esté correcto según tu item_apps.xml
+            // Si en tu item_apps.xml tienes definidos TextViews para username/email y password, debes agregarlos aquí.
+        }
+
+        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_apps, parent, false)
+            return AppViewHolder(view)
+        }
+
+        override fun onBindViewHolder(holder: AppViewHolder, position: Int) {
+            val app = appsList[position]
+            holder.appNameTextView.text = app.name
+            // Configura aquí el resto de los datos de la app, como el icono, si es necesario y tienes esa información disponible.
+            holder.itemView.setOnClickListener { onAppClick(app) }
+        }
+
+        override fun getItemCount(): Int = appsList.size
+    }
+}

@@ -1,5 +1,6 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -11,52 +12,55 @@ import com.linkiaM13G3.akmAndroidClient.R
 
 class PageSignUp : AppCompatActivity() {
 
-    private lateinit var dbHelper: DatabaseHelper
+
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        dbHelper = DatabaseHelper(this)
-
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.page_sign_up)
+        setContentView(R.layout.page_sign_up) // Confirma que este es el layout correcto
+
+        val databaseHelper = DatabaseHelper.getInstance(this)
 
         val buttonSignUp: Button = findViewById(R.id.buttonSignUp)
         val textInputFName: TextInputLayout = findViewById(R.id.textInputFName)
         val textInputLName: TextInputLayout = findViewById(R.id.textInputLName)
         val emailTextInputLayout: TextInputLayout = findViewById(R.id.textInputMail)
-        val telephoneTextInputLayout: TextInputLayout = findViewById(R.id.textInputTelephone)
-        val usernameTextInputLayout: TextInputLayout = findViewById(R.id.textInputUsername)
         val passwordTextInputLayout: TextInputLayout = findViewById(R.id.textInputPassword)
         val rePasswordTextInputLayout: TextInputLayout = findViewById(R.id.textInputREPassword)
 
         buttonSignUp.setOnClickListener {
-            val fName = textInputFName.editText?.text.toString().trim()
-            val lName = textInputLName.editText?.text.toString().trim()
+            val firstName = textInputFName.editText?.text.toString().trim()
+            val lastName = textInputLName.editText?.text.toString().trim()
             val email = emailTextInputLayout.editText?.text.toString().trim()
-            val telephone = telephoneTextInputLayout.editText?.text.toString().trim()
-            val usernameOrEmail = usernameTextInputLayout.editText?.text.toString().trim()
             val password = passwordTextInputLayout.editText?.text.toString().trim()
             val rePassword = rePasswordTextInputLayout.editText?.text.toString().trim()
 
-            val isValidFName = validateName(fName, textInputFName)
-            val isValidLName = validateName(lName, textInputLName)
+            if (firstName.isNullOrEmpty() || lastName.isNullOrEmpty() || email.isNullOrEmpty() || password.isNullOrEmpty() || rePassword.isNullOrEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+
+            // Suponemos que las funciones de validación están implementadas correctamente
             val isValidEmail = validateEmail(email, emailTextInputLayout)
-            val isValidTelephone = validateTelephone(telephone, telephoneTextInputLayout)
-            val isValidUsernameOrEmail = validateUsernameOrEmail(usernameOrEmail, usernameTextInputLayout)
             val isValidPassword = validatePassword(password, passwordTextInputLayout)
             val isPasswordMatch = validateRePassword(password, rePassword, rePasswordTextInputLayout)
 
-            if (isValidFName && isValidLName && isValidEmail && isValidTelephone && isValidUsernameOrEmail && isValidPassword && isPasswordMatch) {
-                val result = dbHelper.insertCredential(fName, email, password, "Some notes", "credential") // Usar dbHelper para llamar a insertCredential
-                if (result == -1L) {
+            if (isValidEmail && isValidPassword && isPasswordMatch) {
+                val userId = databaseHelper.insertUser(firstName, lastName, email, password)
+                if (userId == -1L) {
                     Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
                 } else {
+                    // Guardar userId en Preferencias Compartidas o alguna forma de almacenamiento persistente
+                    val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+                    val editor = sharedPreferences.edit()
+                    editor.putInt("userId", userId.toInt()) // Asegúrate de que el ID del usuario sea guardado correctamente como un entero
+                    editor.apply()
+
                     Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show()
-                    val mainIntent = Intent(this, PageMain::class.java)
-                    startActivity(mainIntent)
+                    startActivity(Intent(this, PageMain::class.java)) // Llevar al usuario a la pantalla principal como un usuario logueado
                 }
             }
         }
     }
+
     private fun validateName(name: String, textInputLayout: TextInputLayout): Boolean {
         textInputLayout.error = null // Limpia errores previos
 

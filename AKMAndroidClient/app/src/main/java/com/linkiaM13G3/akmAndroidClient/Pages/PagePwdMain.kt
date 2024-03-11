@@ -1,5 +1,6 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
+import android.content.Context
 import android.content.Intent
 import android.credentials.CredentialManager
 import android.os.Bundle
@@ -12,41 +13,43 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textfield.TextInputEditText
 import com.linkiaM13G3.akmAndroidClient.R
 
+
+
 class PagePwdMain : AppCompatActivity() {
 
-    private lateinit var databaseHelper: DatabaseHelper // Añade esto
+    private lateinit var databaseHelper: DatabaseHelper // Referencia a tu ayudante de base de datos
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_password)
 
-        databaseHelper = DatabaseHelper(this) // Inicializa esto
+        databaseHelper = DatabaseHelper.getInstance(this)
 
         val btnSave = findViewById<Button>(R.id.button)
         val btnBack = findViewById<Button>(R.id.btn_backArrowpsw)
+        val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+        val userId = sharedPreferences.getInt("userId", -1) // Asume -1 como valor predeterminado si no se encuentra
 
         btnBack.setOnClickListener {
-            val intentTag = Intent(this, PageAppsActivity::class.java)
-            startActivity(intentTag)
+            startActivity(Intent(this, PageAppsActivity::class.java))
         }
 
         btnSave.setOnClickListener {
             val name = findViewById<TextInputEditText>(R.id.eddName).text.toString().trim()
-            val emailOrUsername = findViewById<TextInputEditText>(R.id.edUserId).text.toString().trim()
+            val usernameOrEmail = findViewById<TextInputEditText>(R.id.edUserId).text.toString().trim()
             val password = findViewById<TextInputEditText>(R.id.edUserPassword).text.toString().trim()
-            val notes = findViewById<TextInputEditText>(R.id.notes).text.toString().trim()
 
-            if (name.isNotEmpty() && emailOrUsername.isNotEmpty() && password.isNotEmpty()) {
-                // Usamos databaseHelper para insertar la nueva credencial
-                val result = databaseHelper.insertCredential(name, emailOrUsername, password, notes, "credential")
-                if (result != -1L) { // Verifica si la inserción fue exitosa
-                    Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
+            if (name.isNotEmpty() && usernameOrEmail.isNotEmpty() && password.isNotEmpty()) {
+                // Asegúrate de tener el userId correcto en este punto
+                val result = databaseHelper.insertApp(userId, name, usernameOrEmail, password)
+                if (result != -1L) {
+                    Toast.makeText(this, "App saved successfully", Toast.LENGTH_SHORT).show()
                     finish() // Cierra la actividad y regresa a la anterior
                 } else {
-                    Toast.makeText(this, "Error saving credentials", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error saving the app", Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(this, "Please fill out all fields", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Please fill out all required fields", Toast.LENGTH_SHORT).show()
             }
         }
     }

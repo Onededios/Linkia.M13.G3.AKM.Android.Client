@@ -2,6 +2,7 @@ package com.linkiaM13G3.akmAndroidClient.Pages
 
 
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -11,35 +12,37 @@ import com.google.android.material.textfield.TextInputLayout
 import com.linkiaM13G3.akmAndroidClient.R
 
 class PageSignIn : AppCompatActivity() {
-    private lateinit var dbHelper: DatabaseHelper
+    private lateinit var databaseHelper: DatabaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_sign_in)
-        dbHelper = DatabaseHelper(this)
+        databaseHelper = DatabaseHelper.getInstance(this)
 
-        // Botón para ir a la página de registro
         val btnForgotPwd = findViewById<Button>(R.id.buttonSignUp)
-
-        // Botón de inicio de sesión
         val btnLogin = findViewById<Button>(R.id.buttonSignIn)
 
-        // Referencias a los TextInputLayout usando los IDs correctos
-        val usernameOrEmailInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutUsername) // Asegúrate de que este ID esté actualizado en el XML
-        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayout) // Este ID ya está correcto
+        // Asegúrate de que estos ID sean correctos según tu layout page_sign_in.xml
+        val usernameOrEmailInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutUsername)
+        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayout) // Actualizado para reflejar un nombre de ID más descriptivo
 
         btnLogin.setOnClickListener {
-            // Extrae el texto de los TextInputEditText que están dentro de los TextInputLayout
             val emailOrUsername = usernameOrEmailInputLayout.editText?.text.toString().trim()
             val password = passwordInputLayout.editText?.text.toString().trim()
 
-            // Lógica para verificar las credenciales de inicio de sesión
-            if (dbHelper.userCanLogIn(emailOrUsername, password)) {
-                // Credenciales correctas, navegar a la página principal
-                val intent = Intent(this, PageMain::class.java)
-                startActivity(intent)
+            val userId = databaseHelper.getUserIdForLogin(emailOrUsername, password)
+            if (userId != -1) {
+                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
+
+                // Almacenar el userId en las preferencias compartidas
+                val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+                val editor = sharedPreferences.edit()
+                editor.putInt("userId", userId)
+                editor.apply()
+
+                // Navegar a la actividad principal
+                startActivity(Intent(this, PageMain::class.java))
             } else {
-                // Credenciales incorrectas, mostrar error
                 Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
             }
         }

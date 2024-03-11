@@ -9,18 +9,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="cambios para el loggin y la bbdd">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/MainActitivy.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/DatabaseHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/DatabaseHelper.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PagePwdMain.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PagePwdMain.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_in.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_up.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +44,19 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3901a95d-ad82-4abd-a06c-06683d951c19" />
+        <option name="url" value="https://github.com/Onededios/Linkia.M13.G3.AKM.Android.Client.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -65,6 +74,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
@@ -153,6 +163,14 @@
       <option name="presentableId" value="Default" />
       <updated>1708786299121</updated>
     </task>
+    <task id="LOCAL-00001" summary="cambios para el loggin y la bbdd">
+      <created>1710156653179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710156653179</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -177,5 +195,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="cambios para el loggin y la bbdd" />
+    <option name="LAST_COMMIT_MESSAGE" value="cambios para el loggin y la bbdd" />
   </component>
 </project>
