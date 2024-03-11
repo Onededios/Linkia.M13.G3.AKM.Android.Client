@@ -7,6 +7,7 @@ import android.content.ContentValues
 import android.database.Cursor
 
 
+
 class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
 
     companion object {
@@ -18,32 +19,39 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
         private const val COLUMN_EMAIL_OR_USERNAME = "email_or_username"
         private const val COLUMN_PASSWORD = "password"
         private const val COLUMN_NOTES = "notes"
+        private const val COLUMN_TYPE = "type"
     }
 
     override fun onCreate(db: SQLiteDatabase) {
         val CREATE_TABLE = ("CREATE TABLE $TABLE_NAME (" +
-                "$COLUMN_ID INTEGER PRIMARY KEY," +
+                "$COLUMN_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_NAME TEXT," +
-                "$COLUMN_EMAIL_OR_USERNAME TEXT," +
+                "$COLUMN_EMAIL_OR_USERNAME TEXT UNIQUE," +
                 "$COLUMN_PASSWORD TEXT," +
-                "$COLUMN_NOTES TEXT)")
+                "$COLUMN_NOTES TEXT," +
+                "TYPE TEXT)") // Nueva columna para el tipo de credencial
         db.execSQL(CREATE_TABLE)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
-        db.execSQL("DROP TABLE IF EXISTS $TABLE_NAME")
-        onCreate(db)
+        // Aquí es donde actualizas tu esquema de base de datos si has incrementado DATABASE_VERSION
+        if (oldVersion < 2) {
+            // Por ejemplo, si la actualización es desde una versión anterior a la 2,
+            // añades la nueva columna 'type' a la tabla 'credentials'.
+            val ADD_COLUMN_TYPE = "ALTER TABLE $TABLE_NAME ADD COLUMN $COLUMN_TYPE TEXT"
+            db.execSQL(ADD_COLUMN_TYPE)
+        }
     }
-
-    fun insertCredential(name: String, emailOrUsername: String, password: String, notes: String): Long {
+    fun insertCredential(name: String, emailOrUsername: String, password: String, notes: String, type: String): Long {
         val db = writableDatabase
         val values = ContentValues().apply {
             put(COLUMN_NAME, name)
             put(COLUMN_EMAIL_OR_USERNAME, emailOrUsername)
             put(COLUMN_PASSWORD, password)
             put(COLUMN_NOTES, notes)
+            put("TYPE", type)
         }
-        return db.insert(TABLE_NAME, null, values)
+        return db.insertWithOnConflict(TABLE_NAME, null, values, SQLiteDatabase.CONFLICT_IGNORE)
     }
 
     fun getAllCredentials(): List<Credential> {
@@ -82,6 +90,16 @@ class DatabaseHelper(context: Context) : SQLiteOpenHelper(context, DATABASE_NAME
             selection,
             selectionArgs
         )
+    }
+    fun userCanLogIn(emailOrUsername: String, password: String): Boolean {
+        val db = this.readableDatabase
+        val projection = arrayOf(COLUMN_ID) // Solo necesitamos el ID para verificar la existencia
+        val selection = "$COLUMN_EMAIL_OR_USERNAME = ? AND $COLUMN_PASSWORD = ?"
+        val selectionArgs = arrayOf(emailOrUsername, password)
+        val cursor = db.query(TABLE_NAME, projection, selection, selectionArgs, null, null, null)
+        val userExists = cursor.moveToFirst()
+        cursor.close()
+        return userExists
     }
 }
 

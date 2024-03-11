@@ -38,7 +38,7 @@ class PagePwdMain : AppCompatActivity() {
 
             if (name.isNotEmpty() && emailOrUsername.isNotEmpty() && password.isNotEmpty()) {
                 // Usamos databaseHelper para insertar la nueva credencial
-                val result = databaseHelper.insertCredential(name, emailOrUsername, password, notes)
+                val result = databaseHelper.insertCredential(name, emailOrUsername, password, notes, "credential")
                 if (result != -1L) { // Verifica si la inserción fue exitosa
                     Toast.makeText(this, "Credentials saved", Toast.LENGTH_SHORT).show()
                     finish() // Cierra la actividad y regresa a la anterior
