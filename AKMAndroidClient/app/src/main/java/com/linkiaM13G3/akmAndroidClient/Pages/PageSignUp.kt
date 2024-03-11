@@ -15,7 +15,7 @@ class PageSignUp : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.page_sign_up) // Confirma que este es el layout correcto
+        setContentView(R.layout.page_sign_up)
 
         val databaseHelper = DatabaseHelper.getInstance(this)
 
@@ -38,7 +38,7 @@ class PageSignUp : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            // Suponemos que las funciones de validación están implementadas correctamente
+
             val isValidEmail = validateEmail(email, emailTextInputLayout)
             val isValidPassword = validatePassword(password, passwordTextInputLayout)
             val isPasswordMatch = validateRePassword(password, rePassword, rePasswordTextInputLayout)
@@ -48,14 +48,14 @@ class PageSignUp : AppCompatActivity() {
                 if (userId == -1L) {
                     Toast.makeText(this, "User already exists", Toast.LENGTH_SHORT).show()
                 } else {
-                    // Guardar userId en Preferencias Compartidas o alguna forma de almacenamiento persistente
+
                     val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
                     val editor = sharedPreferences.edit()
-                    editor.putInt("userId", userId.toInt()) // Asegúrate de que el ID del usuario sea guardado correctamente como un entero
+                    editor.putInt("userId", userId.toInt())
                     editor.apply()
 
                     Toast.makeText(this, "User registered successfully", Toast.LENGTH_SHORT).show()
-                    startActivity(Intent(this, PageMain::class.java)) // Llevar al usuario a la pantalla principal como un usuario logueado
+                    startActivity(Intent(this, PageMain::class.java))
                 }
             }
         }

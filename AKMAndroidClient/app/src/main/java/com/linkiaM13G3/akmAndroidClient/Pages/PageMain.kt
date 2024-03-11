@@ -15,7 +15,7 @@ class PageMain : AppCompatActivity() {
 
         val buttonAddApp = findViewById<Button>(R.id.btn_addApp)
         val buttonSavedKeys = findViewById<Button>(R.id.btn_SavedKeys)
-        val buttonExit = findViewById<Button>(R.id.exit) // Asegúrate de que este ID coincide con tu botón en el layout
+        val buttonExit = findViewById<Button>(R.id.exit)
 
         buttonAddApp.setOnClickListener {
             val intent = Intent(this, PageAppsActivity::class.java)
@@ -33,16 +33,16 @@ class PageMain : AppCompatActivity() {
     }
 
     private fun logoutUser() {
-        // Borrar el userId de las preferencias compartidas
+
         val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        editor.remove("userId") // O editor.clear() si prefieres borrar todos los datos.
+        editor.remove("userId")
         editor.apply()
 
-        // Redirigir al usuario a la pantalla de inicio de sesión
+
         val intent = Intent(this, PageSignIn::class.java)
-        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Limpia el back stack
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
-        finish() // Finaliza esta actividad
+        finish()
     }
 }

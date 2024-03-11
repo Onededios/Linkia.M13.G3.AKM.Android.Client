@@ -42,7 +42,7 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        // Creación de la tabla de usuarios, sin cambios aquí
+
         val CREATE_USERS_TABLE = ("CREATE TABLE $TABLE_USERS (" +
                 "$COLUMN_USER_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_USER_FIRST_NAME TEXT," +
@@ -51,17 +51,17 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
                 "$COLUMN_USER_PASSWORD TEXT)")
         db.execSQL(CREATE_USERS_TABLE)
 
-        // Modificación de la tabla de aplicaciones para incluir user_id
+
         val CREATE_APPS_TABLE = ("CREATE TABLE $TABLE_APPS (" +
                 "$COLUMN_APP_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_APP_NAME TEXT," +
                 "$COLUMN_APP_USERNAME_OR_EMAIL TEXT," +
                 "$COLUMN_APP_PASSWORD TEXT," +
-                "user_id INTEGER, " + // Añadir esta línea
-                "FOREIGN KEY(user_id) REFERENCES $TABLE_USERS($COLUMN_USER_ID))") // Asegura la relación
+                "user_id INTEGER, " +
+                "FOREIGN KEY(user_id) REFERENCES $TABLE_USERS($COLUMN_USER_ID))")
         db.execSQL(CREATE_APPS_TABLE)
 
-        // Creación de la tabla de credenciales, sin cambios aquí
+
         val CREATE_CREDENTIALS_TABLE = ("CREATE TABLE $TABLE_CREDENTIALS (" +
                 "$COLUMN_CREDENTIALS_ID INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "$COLUMN_CREDENTIALS_TYPE TEXT)")
@@ -72,12 +72,9 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         if (oldVersion < 5) {
-            // Ejemplo de cómo manejar actualizaciones. Aquí deberías manejar la actualización real.
+
         }
     }
-
-    // Métodos de ejemplo para insertar y recuperar datos de las tablas
-    // Asegúrate de implementar y adaptar estos métodos según las necesidades específicas de tu aplicación
 
     fun insertUser(firstName: String, lastName: String, email: String, password: String): Long {
         val db = this.writableDatabase
@@ -96,7 +93,7 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
             put("name", name)
             put("username_or_email", usernameOrEmail)
             put("password", password)
-            put("user_id", userId) // Añadir el userId al ContentValues
+            put("user_id", userId)
         }
         return db.insertWithOnConflict(TABLE_APPS, null, values, SQLiteDatabase.CONFLICT_IGNORE)
     }
@@ -119,7 +116,7 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
         return appsList
     }
 
-    // Agrega métodos para recuperar y actualizar datos como se necesite
+
 
     fun userCanLogIn(email: String, password: String): Boolean {
         val db = this.readableDatabase

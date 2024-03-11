@@ -5,7 +5,6 @@ package com.linkiaM13G3.akmAndroidClient.Pages
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Patterns
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -23,9 +22,9 @@ class PageSignIn : AppCompatActivity() {
         val btnForgotPwd = findViewById<Button>(R.id.buttonSignUp)
         val btnLogin = findViewById<Button>(R.id.buttonSignIn)
 
-        // Asegúrate de que estos ID sean correctos según tu layout page_sign_in.xml
+
         val usernameOrEmailInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutUsername)
-        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayout) // Actualizado para reflejar un nombre de ID más descriptivo
+        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayout)
 
         btnLogin.setOnClickListener {
             val emailOrUsername = usernameOrEmailInputLayout.editText?.text.toString().trim()
@@ -35,13 +34,13 @@ class PageSignIn : AppCompatActivity() {
             if (userId != -1) {
                 Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
 
-                // Almacenar el userId en las preferencias compartidas
+
                 val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
                 val editor = sharedPreferences.edit()
                 editor.putInt("userId", userId)
                 editor.apply()
 
-                // Navegar a la actividad principal
+
                 startActivity(Intent(this, PageMain::class.java))
             } else {
                 Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
@@ -49,7 +48,7 @@ class PageSignIn : AppCompatActivity() {
         }
 
         btnForgotPwd.setOnClickListener {
-            // Navegar a la actividad de registro
+
             val intent = Intent(this, PageSignUp::class.java)
             startActivity(intent)
         }
