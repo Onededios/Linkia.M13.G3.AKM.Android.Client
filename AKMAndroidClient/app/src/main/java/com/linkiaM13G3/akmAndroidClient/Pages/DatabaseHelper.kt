@@ -168,5 +168,15 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
 
         return userId
     }
-
+    fun updateAppPassword(appId: Int, newPassword: String): Int {
+        val db = this.writableDatabase
+        val values = ContentValues().apply {
+            put(COLUMN_APP_PASSWORD, newPassword)
+        }
+        val whereClause = "$COLUMN_APP_ID = ?"
+        val whereArgs = arrayOf(appId.toString())
+        val numberOfRowsUpdated = db.update(TABLE_APPS, values, whereClause, whereArgs)
+        db.close()
+        return numberOfRowsUpdated
+    }
 }
