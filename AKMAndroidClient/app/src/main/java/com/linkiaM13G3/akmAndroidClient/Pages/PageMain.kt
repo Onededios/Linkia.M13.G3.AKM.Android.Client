@@ -1,17 +1,11 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
-import AppClient
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import com.linkiaM13G3.akmAndroidClient.R
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
-import okhttp3.Dispatcher
 
 class PageMain : AppCompatActivity() {
 
@@ -20,21 +14,35 @@ class PageMain : AppCompatActivity() {
         setContentView(R.layout.page_main)
 
         val buttonAddApp = findViewById<Button>(R.id.btn_addApp)
-        val buttonSavedKeys=findViewById<Button>(R.id.btn_SavedKeys)
+        val buttonSavedKeys = findViewById<Button>(R.id.btn_SavedKeys)
+        val buttonExit = findViewById<Button>(R.id.exit)
 
         buttonAddApp.setOnClickListener {
             val intent = Intent(this, PageAppsActivity::class.java)
-            startActivity(intent) }
+            startActivity(intent)
+        }
 
-            buttonSavedKeys.setOnClickListener {
-                val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
-                startActivity(intentCredential)
-            }
+        buttonSavedKeys.setOnClickListener {
+            val intentCredential = Intent(this, PageSavedCredentialListActivity::class.java)
+            startActivity(intentCredential)
+        }
+
+        buttonExit.setOnClickListener {
+            logoutUser()
+        }
     }
 
-    private suspend fun fetchApps() {
-        val appClient = AppClient()
-        val apps = withContext(Dispatchers.IO) {appClient.fetchApps()}
-        Log.d("Test", apps.toString())
+    private fun logoutUser() {
+
+        val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.remove("userId")
+        editor.apply()
+
+
+        val intent = Intent(this, PageSignIn::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(intent)
+        finish()
     }
 }

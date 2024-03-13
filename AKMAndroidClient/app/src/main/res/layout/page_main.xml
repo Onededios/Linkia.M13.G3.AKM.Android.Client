@@ -70,6 +70,20 @@ and keep your critical information at your fingertips, protected and organized."
         app:layout_constraintTop_toTopOf="@+id/guideline"
         app:layout_constraintVertical_bias="0.627" />
 
+    <Button
+        android:id="@+id/exit"
+        style="@style/Widget.Material3.Button.TonalButton.Icon"
+        android:layout_width="399dp"
+        android:layout_height="49dp"
+        android:drawableStart="@android:drawable/ic_input_add"
+        android:text="Log out"
+        app:layout_constraintBottom_toTopOf="@+id/guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/glv2"
+        app:layout_constraintTop_toTopOf="@+id/guideline"
+        app:layout_constraintVertical_bias="0.718" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
         android:layout_width="wrap_content"
