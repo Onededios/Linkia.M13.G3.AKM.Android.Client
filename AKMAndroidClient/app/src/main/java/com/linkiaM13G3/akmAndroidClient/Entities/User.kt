@@ -1,11 +1,25 @@
 package com.linkiaM13G3.akmAndroidClient.Entities
 
-class User : Entity() {
-    lateinit var first_name: String
-    lateinit var last_name: String
-    lateinit var email: String
-    lateinit var username: String
-    lateinit var password: String
-    lateinit var country_code: String
-    lateinit var telephone: String
+open class User : Entity() {
+    var first_name: String = ""
+        get() = field
+        set(value) { field = value }
+    var last_name: String = ""
+        get() = field
+        set(value) { field = value }
+    var email: String = ""
+        get() = field
+        set(value) { field = value }
+    var username: String = ""
+        get() = field
+        set(value) { field = value }
+    var password: String = ""
+        get() = field
+        set(value) { field = value }
+    var country_code: String = ""
+        get() = field
+        set(value) { field = value }
+    var telephone: String = ""
+        get() = field
+        set(value) { field = value }
 }

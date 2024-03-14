@@ -36,9 +36,9 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
         private var INSTANCE: DatabaseHelper? = null
 
         fun getInstance(context: Context): DatabaseHelper =
-                INSTANCE ?: synchronized(this) {
-                    INSTANCE ?: DatabaseHelper(context).also { INSTANCE = it }
-                }
+            INSTANCE ?: synchronized(this) {
+                INSTANCE ?: DatabaseHelper(context).also { INSTANCE = it }
+            }
     }
 
     override fun onCreate(db: SQLiteDatabase) {
@@ -151,13 +151,13 @@ class DatabaseHelper private constructor(context: Context) : SQLiteOpenHelper(co
 
 
         val cursor = db.query(
-                TABLE_USERS,
-                arrayOf(COLUMN_USER_ID),
-                "$COLUMN_USER_EMAIL = ? AND $COLUMN_USER_PASSWORD = ?",
-                arrayOf(emailOrUsername, password),
-                null,
-                null,
-                null
+            TABLE_USERS,
+            arrayOf(COLUMN_USER_ID),
+            "$COLUMN_USER_EMAIL = ? AND $COLUMN_USER_PASSWORD = ?",
+            arrayOf(emailOrUsername, password),
+            null,
+            null,
+            null
         )
 
         if (cursor.moveToFirst()) {
