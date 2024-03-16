@@ -41,4 +41,22 @@ class UserClient {
         }
     }
 
+    suspend fun checkUsername(username: String) : Boolean {
+        return try {
+            connection.checkUsername(username = username)
+        } catch (e: IOException) {
+            Log.e("User", "Error checking username: ${e.message}")
+            true
+        }
+    }
+
+    suspend fun checkMail(mail: String) : Boolean {
+        return try {
+            connection.checkMail(mail = mail)
+        } catch (e: IOException) {
+            Log.e("User", "Error checking mail: ${e.message}")
+            true
+        }
+    }
+
 }

@@ -10,36 +10,40 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
 import com.linkiaM13G3.akmAndroidClient.Clients.UserClient
 import com.linkiaM13G3.akmAndroidClient.DTOs.UserSignInDTO
-import com.linkiaM13G3.akmAndroidClient.Entities.User
 import com.linkiaM13G3.akmAndroidClient.Entities.UserSingleton
 import com.linkiaM13G3.akmAndroidClient.Helpers.Validators
 import com.linkiaM13G3.akmAndroidClient.R
 import kotlinx.coroutines.launch
 
 class PageSignIn : AppCompatActivity() {
-    private var api = UserClient()
+    private var _api = UserClient()
+    private lateinit var _btnSignUp: Button
+    private lateinit var _btnSignIn: Button
+    private lateinit var _user: TextInputLayout
+    private lateinit var _pass: TextInputLayout
+
+    private fun initializeView() {
+        _btnSignUp = findViewById(R.id.buttonSignUp)
+        _btnSignIn = findViewById(R.id.buttonSignIn)
+        _user = findViewById(R.id.textInputLayoutUsername)
+        _pass = findViewById(R.id.textInputLayoutPassword)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_sign_in)
+        initializeView()
 
-        val btnForgotPwd = findViewById<Button>(R.id.buttonSignUp)
-        val btnLogin = findViewById<Button>(R.id.buttonSignIn)
-
-        val usernameOrEmailInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutUsername)
-        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutPassword)
-
-        btnLogin.setOnClickListener {
-            val emailOrUsername = usernameOrEmailInputLayout.editText?.text.toString().trim()
-            val password = passwordInputLayout.editText?.text.toString().trim()
-            if (Validators.validateUser(emailOrUsername)) {
+        _btnSignIn.setOnClickListener {
+            val user = _user.editText?.text.toString().trim()
+            val password = _pass.editText?.text.toString().trim()
+            if (Validators.validateUser(user)) {
                 lifecycleScope.launch {
-                    goSignIn(UserSignInDTO(username = emailOrUsername, password = password))
+                    goSignIn(UserSignInDTO(username = user, password = password))
                 }
             } else showToast("Your login is not valid")
         }
 
-        btnForgotPwd.setOnClickListener {
-
+        _btnSignUp.setOnClickListener {
             val intent = Intent(this, PageSignUp::class.java)
             startActivity(intent)
         }
@@ -47,7 +51,7 @@ class PageSignIn : AppCompatActivity() {
 
     private suspend fun goSignIn(dto: UserSignInDTO) {
         try {
-            val user = api.userSignInAsync(dto)
+            val user = _api.userSignInAsync(dto)
             user?.let {
                 UserSingleton.initializeWithUser(it)
                 startActivity(Intent(this@PageSignIn, PageMain::class.java))

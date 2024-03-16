@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
+        app:layout_constraintBottom_toTopOf="@+id/dividerHEndForm"
         app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
         app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
         app:layout_constraintTop_toTopOf="@+id/dividerHStartForm">
@@ -80,6 +80,20 @@
                 android:layout_height="wrap_content"
                 android:hint="Email Address"
                 android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputCountryCode"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                android:id="@+id/autoCompleteCountryCode"
+                android:padding="10sp"
+                android:textSize="15sp"
+                android:layout_width="match_parent"
+                android:hint="Country code"
+                android:layout_height="match_parent"/>
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
