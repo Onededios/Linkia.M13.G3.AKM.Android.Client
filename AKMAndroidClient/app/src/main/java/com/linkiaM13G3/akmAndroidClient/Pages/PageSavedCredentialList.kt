@@ -30,7 +30,7 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
 
         val btnBack = findViewById<Button>(R.id.btn_back)
         btnBack.setOnClickListener {
-            startActivity(Intent(this, PageAppsActivity::class.java))
+            startActivity(Intent(this, PageApps::class.java))
         }
 
         val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
@@ -46,7 +46,6 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
 
     private fun showCustomDialog(app: App) {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_custom, null)
-
 
         val appUsernameEmailTextView = dialogView.findViewById<TextView>(R.id.etUsername)
         val appPasswordEditText = dialogView.findViewById<TextInputEditText>(R.id.etPassword)
@@ -96,11 +95,11 @@ class PageSavedCredentialListActivity : AppCompatActivity() {
     inner class AdapterApps(private val appsList: List<App>, private val onAppClick: (App) -> Unit) : RecyclerView.Adapter<AdapterApps.AppViewHolder>() {
 
         inner class AppViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val appNameTextView: TextView = view.findViewById(R.id.tvAppname)
+            val appNameTextView: TextView = view.findViewById(R.id.tvAppName)
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AppViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_apps, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.item_app, parent, false)
             return AppViewHolder(view)
         }
 

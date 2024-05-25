@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">Armored Key Manager Android Client</string>
+
+    <!-- Start of New Credential -->
+    <string name="credential_title_newCredential">Create new credential</string>
+    <string name="credential_title_alias">Alias</string>
+    <string name="credential_hint_alias">New alias for credential</string>
+    <string name="credential_title_user">User</string>
+    <string name="credential_hint_user">New credential user</string>
+    <string name="credential_title_password">Password</string>
+    <string name="credential_hint_password">New credential password</string>
+    <string name="credential_title_application">Application</string>
+    <string name="credential_hint_app">Choose an app</string>
+    <string name="credential_title_tags">Tags</string>
+    <string name="credential_title_notes">Notes</string>
+    <string name="credential_hint_notes">Optionally, add notes to the credential</string>
+    <string name="credential_hint_saveNew">Save new credential</string>
+    <!-- End of Credential -->
+
+    <!-- Start of Dialog App List -->
+    <string name="dialogAppList_title">Available Apps</string>
+    <string name="dialogAppList_hint_search">Search an app</string>
+    <!-- End of Dialog Apps List -->
 </resources>

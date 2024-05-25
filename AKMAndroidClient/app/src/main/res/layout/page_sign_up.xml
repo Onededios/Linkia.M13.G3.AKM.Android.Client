@@ -3,41 +3,77 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:padding="5sp">
 
-    <TextView
-        android:layout_width="0dp"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineTitleSeparator"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="New User"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/dividerHStartForm"
-        app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
-        app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineButtonSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineArrowSeparator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.15"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tvNewLogin"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="New user"
+        android:textAlignment="center"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitleSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guidelineArrowSeparator"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/buttonReturn"
+        android:layout_width="35sp"
+        android:layout_height="35sp"
+        android:background="@drawable/outline_arrow_forward_24"
+        app:layout_constraintBottom_toTopOf="@+id/guidelineTitleSeparator"
+        app:layout_constraintEnd_toStartOf="@+id/guidelineArrowSeparator"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="?android:attr/actionModeCloseDrawable" />
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
-        app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
-        app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
-        app:layout_constraintTop_toTopOf="@+id/dividerHStartForm">
+        app:layout_constraintBottom_toTopOf="@+id/guidelineButtonSeparator"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineTitleSeparator">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/dividerHEndForm"
-        app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
-        app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
-        app:layout_constraintTop_toTopOf="@+id/dividerHStartForm">
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Personal Info"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputFName"
@@ -68,7 +104,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:text="Contact Info"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputMail"
@@ -113,7 +154,12 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
             android:text="Account Info"
-            android:textSize="20sp"/>
+            android:textSize="25sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/black"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputUsername"
@@ -152,44 +198,16 @@
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
     </ScrollView>
+
     <Button
         android:id="@+id/buttonSignUp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Sign Up"
-        android:textSize="30sp"
-        android:textStyle="bold"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/dividerVRight"
-        app:layout_constraintStart_toStartOf="@+id/dividerVLeft"
-        app:layout_constraintTop_toBottomOf="@+id/dividerHEndForm" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dividerVLeft"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.1" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dividerVRight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.9" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dividerHStartForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/dividerHEndForm"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.85" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guidelineButtonSeparator"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

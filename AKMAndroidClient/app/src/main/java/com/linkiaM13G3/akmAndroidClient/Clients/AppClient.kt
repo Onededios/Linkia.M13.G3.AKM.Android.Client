@@ -8,7 +8,6 @@ private val connection = Connection().appService
 class AppClient {
     suspend fun fetchApps() : List<App>? {
         return try {
-            if (StatusClient().getStatusAsync()) throw IOException("Status check failed")
             connection.getApps()
         } catch (e: IOException) {
             Log.e("Apps", "Error fetching apps: ${e.message}")

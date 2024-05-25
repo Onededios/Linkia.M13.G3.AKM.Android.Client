@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    android:padding="20sp">
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            android:layout_weight="0"
+            android:padding="8dp"/>
+
+        <ImageView
+            android:id="@+id/ivAppIcon"
+            android:layout_width="35sp"
+            android:layout_height="35sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_weight="2"
+
+            app:srcCompat="@drawable/ic_launcher_foreground"/>
+
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:layout_weight="15"
+            android:text="Pedro"
+            android:textSize="20sp"/>
+</LinearLayout>

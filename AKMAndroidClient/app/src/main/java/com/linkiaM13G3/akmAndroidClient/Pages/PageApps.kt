@@ -1,6 +1,7 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
 
+import AdapterAppList
 import AppClient
 import android.content.Intent
 import android.os.Bundle
@@ -15,41 +16,49 @@ import com.linkiaM13G3.akmAndroidClient.Entities.App
 import com.linkiaM13G3.akmAndroidClient.R
 import kotlinx.coroutines.launch
 
-class PageAppsActivity : AppCompatActivity() {
+class PageApps : AppCompatActivity() {
+    private var _api = AppClient()
+    private var allApps: List<App>? = null
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var adapter: AdapterAppList
-    private var api = AppClient()
+    private lateinit var buttonBack: Button
+    private lateinit var buttonAddManually: Button
+    private fun initComponents() {
+        recyclerView = findViewById(R.id.rvOptions)
+        buttonBack = findViewById(R.id.btn_backArrowpsw)
+        buttonAddManually = findViewById(R.id.btn_addManual)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_apps_list)
-        setupButtons()
+        initComponents()
         setupRecyclerView()
+        setupButtons()
         setupSearchView()
     }
 
     private fun setupButtons() {
-        val buttonBack = findViewById<Button>(R.id.btn_backArrowpsw)
         buttonBack.setOnClickListener {
             startActivity(Intent(this, PageMain::class.java))
         }
-
-        val buttonAddManually = findViewById<Button>(R.id.btn_addManual)
         buttonAddManually.setOnClickListener {
             startActivity(Intent(this, PagePwdMain::class.java))
         }
     }
 
     private fun setupRecyclerView() {
-        recyclerView = findViewById(R.id.rvOptions)
         recyclerView.layoutManager = LinearLayoutManager(this)
         lifecycleScope.launch {
-            adapter = AdapterAppList(fetchApps(), this@PageAppsActivity)
-            recyclerView.adapter = adapter
+            allApps = fetchApps()
+            updateRecyclerView(allApps)
         }
     }
 
+
+    private fun updateRecyclerView(apps: List<App>?) {
+        recyclerView.adapter = AdapterAppList(recyclerView.context, apps)
+    }
     private fun setupSearchView() {
         val searchView = findViewById<SearchView>(R.id.srchView_apps)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -59,16 +68,24 @@ class PageAppsActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?): Boolean {
                 newText?.let {
-                    adapter?.filter(it)
+                    updateRecyclerView(filterApps(newText))
                 }
                 return true
             }
         })
     }
 
+    private fun filterApps(name: String): List<App> {
+        val filteredApps = allApps?.filter { app ->
+            val appName = app.name.lowercase()
+            appName.contains(name.lowercase())
+        }
+        return filteredApps.orEmpty()
+    }
+
     private suspend fun fetchApps(): List<App>? {
         return try {
-            api.fetchApps()
+            _api.fetchApps()
         } catch (e: Exception) {
             Log.e("AppsPage", e.message.toString())
             null

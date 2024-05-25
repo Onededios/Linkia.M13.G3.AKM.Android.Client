@@ -18,7 +18,7 @@ class PageMain : AppCompatActivity() {
         val buttonExit = findViewById<Button>(R.id.exit)
 
         buttonAddApp.setOnClickListener {
-            val intent = Intent(this, PageAppsActivity::class.java)
+            val intent = Intent(this, PageApps::class.java)
             startActivity(intent)
         }
 
