@@ -4,8 +4,11 @@ import com.google.type.DateTime
 import java.util.UUID
 
 class Password : Entity() {
-    lateinit var id_user: UUID
+    lateinit var alias: String
+    lateinit var username: String
     lateinit var password: String
+    var app: App? = null
+    var tags: Array<String>? = null
     var description: String? = null
-    var date_expiration: DateTime? = null
+    lateinit var date_expiration: String
 }

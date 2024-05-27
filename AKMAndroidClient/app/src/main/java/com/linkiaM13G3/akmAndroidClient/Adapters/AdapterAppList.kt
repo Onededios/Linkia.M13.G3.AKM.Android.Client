@@ -27,16 +27,9 @@ class AdapterAppList(
         }
 
         override fun onClick(v: View) {
-            // Get the clicked item position
             val position = adapterPosition
-
-            // Update the selected item
             selectedItem = position
-
-            // Notify adapter about item selection change
             notifyDataSetChanged()
-
-            // Do something with the selected item
         }
     }
 
@@ -51,19 +44,18 @@ class AdapterAppList(
 
         holder.radioButton.setOnClickListener {
             selectedItem = currentPosition
-            notifyDataSetChanged() // Notify adapter of the change
+            notifyDataSetChanged()
         }
 
         val app = appList?.get(currentPosition)
         holder.textViewName.text = app?.name
-        holder.imageViewLogo.setImageResource(R.drawable.logo_google)
 
         app?.icon?.let { iconUrl ->
-            context?.let {
-                Glide.with(it)
+            Glide.with(holder.itemView.context)
                     .load(iconUrl)
+                    .placeholder(R.drawable.logo_google)
+                    .error(R.drawable.logo_google)
                     .into(holder.imageViewLogo)
-            }
         }
 
         holder.itemView.isSelected = currentPosition == selectedItem

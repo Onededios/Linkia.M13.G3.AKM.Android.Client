@@ -17,7 +17,7 @@
         android:theme="@style/Theme.ArmoredKeyManagerAndroidClient"
         android:enableOnBackInvokedCallback="true">
         <activity
-            android:name=".Pages.PageCredentialCreation"
+            android:name=".Pages.PageCredentials"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

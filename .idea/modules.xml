@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Armored_Key_Manager_Android_Client.app.unitTest.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Linkia.M13.G3.AKM.Android.Client.iml" filepath="$PROJECT_DIR$/.idea/Linkia.M13.G3.AKM.Android.Client.iml" />
     </modules>
   </component>

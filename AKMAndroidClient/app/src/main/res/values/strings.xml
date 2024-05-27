@@ -21,4 +21,8 @@
     <string name="dialogAppList_title">Available Apps</string>
     <string name="dialogAppList_hint_search">Search an app</string>
     <!-- End of Dialog Apps List -->
+
+    <!-- Start of Credential List -->
+    <string name="credential_title_list">Your credentials</string>
+    <!-- End of Credential List -->
 </resources>
