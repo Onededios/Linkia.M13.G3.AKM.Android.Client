@@ -3,6 +3,7 @@ package com.linkiaM13G3.akmAndroidClient.API
 import com.linkiaM13G3.akmAndroidClient.Services.AppService
 import com.linkiaM13G3.akmAndroidClient.Services.PasswordService
 import com.linkiaM13G3.akmAndroidClient.Services.StatusService
+import com.linkiaM13G3.akmAndroidClient.Services.TagService
 import com.linkiaM13G3.akmAndroidClient.Services.UserService
 
 const val protocol: String = "https:"
@@ -17,4 +18,5 @@ class Connection {
     var userService = Service.buildService(UserService::class.java, fullUrl)
     var statusService = Service.buildService(StatusService::class.java, fullUrl)
     var passwordService = Service.buildService(PasswordService::class.java, fullUrl)
+    var tagService = Service.buildService(TagService::class.java, fullUrl)
 }

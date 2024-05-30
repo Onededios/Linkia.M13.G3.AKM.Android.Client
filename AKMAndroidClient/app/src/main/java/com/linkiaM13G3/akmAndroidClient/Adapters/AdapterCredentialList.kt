@@ -8,18 +8,25 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.linkiaM13G3.akmAndroidClient.Clients.PasswordClient
+import com.linkiaM13G3.akmAndroidClient.Dialogs.DialogModifyCredential
+import com.linkiaM13G3.akmAndroidClient.Entities.App
 import com.linkiaM13G3.akmAndroidClient.Entities.Password
+import com.linkiaM13G3.akmAndroidClient.Entities.Tag
 import com.linkiaM13G3.akmAndroidClient.Helpers.Parsers
+import com.linkiaM13G3.akmAndroidClient.Helpers.Updaters
 import com.linkiaM13G3.akmAndroidClient.R
 
 class AdapterCredentialList(
         private val context: Context?,
         private val credentialList: List<Password>?,
+        private val appList: List<App>,
+        private val tagList: List<Tag>?,
+        private val api: PasswordClient
 ) : RecyclerView.Adapter<AdapterCredentialList.ViewHolder>() {
         inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
                 val textAlias: TextView = itemView.findViewById(R.id.card_password_alias)
@@ -35,8 +42,13 @@ class AdapterCredentialList(
                 }
 
                 override fun onClick(v: View) {
-                        val position = adapterPosition
-                        notifyDataSetChanged()
+                        context?.let { context ->
+                                val password = credentialList?.get(adapterPosition)
+                                password?.let {
+                                        val dialog = DialogModifyCredential(context, it, appList, tagList, api)
+                                        dialog.show((context as AppCompatActivity).supportFragmentManager, "DialogModifyCredential")
+                                }
+                        }
                 }
         }
 
@@ -51,28 +63,16 @@ class AdapterCredentialList(
                 val credential = credentialList?.get(position)
                 val date = credential?.date_expiration
                 val formattedDate = if (date != null) Parsers.parseISODateToYMD(date) else "N/A"
+                val pass = credential?.password
+                val formattedPass = if (pass != null) Parsers.parsePasswordSecure(pass) else "N/A"
 
                 holder.textAlias.text = credential?.alias ?: "N/A"
-                holder.textPassword.text = credential?.password ?: "N/A"
+                holder.textPassword.text =  formattedPass
                 holder.textDate.text = formattedDate
                 holder.textUsername.text = credential?.username ?: "N/A"
                 holder.textDescription.text = credential?.description ?: "N/A"
 
-                credential?.tags?.let { tags ->
-                        holder.chipGroup.removeAllViews()
-                        for (tag in tags) {
-                                val chip = Chip(holder.itemView.context)
-                                chip.text = tag
-                                chip.layoutParams = ViewGroup.LayoutParams(
-                                        ViewGroup.LayoutParams.WRAP_CONTENT,
-                                        ViewGroup.LayoutParams.MATCH_PARENT
-                                )
-                                chip.isClickable = false
-                                chip.setChipBackgroundColorResource(R.color.grey_700)
-                                chip.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.white))
-                                holder.chipGroup.addView(chip)
-                        }
-                }
+                credential?.tags?.let { tags -> Updaters.updateChipGroup(holder.chipGroup, tags, context!!)}
 
                 credential?.app?.icon?.let { iconUrl ->
                         Glide.with(holder.itemView.context)

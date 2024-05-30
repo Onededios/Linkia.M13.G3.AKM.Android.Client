@@ -2,7 +2,7 @@ package com.linkiaM13G3.akmAndroidClient.Entities
 
 import java.util.UUID
 
-object UserSingleton : User() {
+object UserSingleton : User(UUID.randomUUID()) {
     fun initializeWithUser(user: User) {
         id = user.id
         first_name = user.first_name

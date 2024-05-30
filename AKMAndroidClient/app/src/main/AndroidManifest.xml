@@ -17,21 +17,16 @@
         android:theme="@style/Theme.ArmoredKeyManagerAndroidClient"
         android:enableOnBackInvokedCallback="true">
         <activity
-            android:name=".Pages.PageCredentials"
+            android:name=".Pages.PageSignIn"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--
-    <activity android:name=".Pages.PageAppsActivity"/>
-        <activity android:name=".Pages.PagePwdMain"/>
-        <activity android:name=".Pages.PageSavedCredentialListActivity"/>
+        <activity android:name=".Pages.PageCredentialCreation"/>
+        <activity android:name=".Pages.PageCredentials"/>
         <activity android:name=".Pages.PageSignUp"/>
-        <activity android:name=".Pages.PageMain"/>
--->
     </application>
 
 </manifest>

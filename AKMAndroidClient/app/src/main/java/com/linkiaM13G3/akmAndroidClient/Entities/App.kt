@@ -1,3 +1,5 @@
 package com.linkiaM13G3.akmAndroidClient.Entities
 
-class App( var name: String, var icon: String? ) : Entity()
+import java.util.UUID
+
+class App(id: UUID, var name: String, var icon: String? ) : Entity(id)

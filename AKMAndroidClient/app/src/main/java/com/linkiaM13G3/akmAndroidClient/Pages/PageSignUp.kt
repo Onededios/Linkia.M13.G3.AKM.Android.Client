@@ -7,7 +7,6 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.node.getOrAddAdapter
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
 import com.google.android.material.textfield.TextInputLayout
@@ -17,10 +16,10 @@ import com.linkiaM13G3.akmAndroidClient.Helpers.FieldCheck
 import com.linkiaM13G3.akmAndroidClient.Helpers.Validators
 import com.linkiaM13G3.akmAndroidClient.R
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 class PageSignUp : AppCompatActivity() {
     private var _api = UserClient()
+    private lateinit var _btnReturn: Button
     private lateinit var _btnSignUp: Button
     private lateinit var _tilFName: TextInputLayout
     private lateinit var _tilLName: TextInputLayout
@@ -33,6 +32,7 @@ class PageSignUp : AppCompatActivity() {
     private lateinit var _tilRPass: TextInputLayout
     private lateinit var _arrayCCodes: Array<String>
     private fun initializeView() {
+        _btnReturn = findViewById(R.id.btnReturnFromCredentialList)
         _tilFName = findViewById(R.id.textInputFName)
         _btnSignUp = findViewById(R.id.buttonSignUp)
         _tilLName = findViewById(R.id.textInputLName)
@@ -51,6 +51,10 @@ class PageSignUp : AppCompatActivity() {
         setContentView(R.layout.page_sign_up)
         _arrayCCodes = resources.getStringArray(R.array.country_codes)
         initializeView()
+
+        _btnReturn.setOnClickListener {
+            startActivity(Intent(this, PageSignIn::class.java))
+        }
 
         _btnSignUp.setOnClickListener {
             val firstName = _tilFName.editText?.text.toString().trim()

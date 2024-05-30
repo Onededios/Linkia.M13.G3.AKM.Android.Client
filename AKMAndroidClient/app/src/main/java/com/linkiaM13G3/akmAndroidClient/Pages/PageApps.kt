@@ -1,22 +1,10 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
 
-import AdapterAppList
-import AppClient
-import android.content.Intent
-import android.os.Bundle
-import android.util.Log
-import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.linkiaM13G3.akmAndroidClient.Entities.App
-import com.linkiaM13G3.akmAndroidClient.R
-import kotlinx.coroutines.launch
 
 class PageApps : AppCompatActivity() {
+    /*
     private var _api = AppClient()
     private var allApps: List<App>? = null
 
@@ -57,7 +45,11 @@ class PageApps : AppCompatActivity() {
 
 
     private fun updateRecyclerView(apps: List<App>?) {
-        recyclerView.adapter = AdapterAppList(recyclerView.context, apps)
+        recyclerView.adapter = AdapterAppList(recyclerView.context, apps) { app ->
+            run {
+                (this as? DialogSelectApp.OnAppPassedListener)?.onAppPassed(app)
+            }
+        }
     }
     private fun setupSearchView() {
         val searchView = findViewById<SearchView>(R.id.srchView_apps)
@@ -97,6 +89,7 @@ class PageApps : AppCompatActivity() {
         }
         startActivity(intent)
     }
+    */
 }
 
 

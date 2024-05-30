@@ -1,9 +1,9 @@
+
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.RadioButton
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -12,24 +12,25 @@ import com.linkiaM13G3.akmAndroidClient.R
 
 class AdapterAppList(
     private val context: Context?,
-    private val appList: List<App>?,
+    private val appList: List<App?>?,
+    private val onAppSelected: (App?)  -> Unit
 ) : RecyclerView.Adapter<AdapterAppList.ViewHolder>() {
     private var selectedItem = 0
     private val inflater: LayoutInflater = LayoutInflater.from(context)
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         val textViewName: TextView = itemView.findViewById(R.id.tvAppName)
         val imageViewLogo: ImageView = itemView.findViewById(R.id.ivAppIcon)
-        val radioButton: RadioButton = itemView.findViewById(R.id.radioButton)
 
         init {
             itemView.setOnClickListener(this)
-            radioButton.setOnClickListener(this)
         }
 
         override fun onClick(v: View) {
             val position = adapterPosition
-            selectedItem = position
-            notifyDataSetChanged()
+            if (position != RecyclerView.NO_POSITION) {
+                val selectedApp = appList!![position]
+                onAppSelected(selectedApp)
+            }
         }
     }
 
@@ -40,12 +41,6 @@ class AdapterAppList(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentPosition = holder.adapterPosition
-        holder.radioButton.isChecked = currentPosition == selectedItem
-
-        holder.radioButton.setOnClickListener {
-            selectedItem = currentPosition
-            notifyDataSetChanged()
-        }
 
         val app = appList?.get(currentPosition)
         holder.textViewName.text = app?.name
@@ -53,8 +48,8 @@ class AdapterAppList(
         app?.icon?.let { iconUrl ->
             Glide.with(holder.itemView.context)
                     .load(iconUrl)
-                    .placeholder(R.drawable.logo_google)
-                    .error(R.drawable.logo_google)
+                    .placeholder(R.drawable.logo_default)
+                    .error(R.drawable.logo_default)
                     .into(holder.imageViewLogo)
         }
 
@@ -62,4 +57,8 @@ class AdapterAppList(
     }
 
     override fun getItemCount(): Int = appList?.size ?: 0
+
+    fun getSelectedItem(): App? {
+        return appList?.get(selectedItem)
+    }
 }

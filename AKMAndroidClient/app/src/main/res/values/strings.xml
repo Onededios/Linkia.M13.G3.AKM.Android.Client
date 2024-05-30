@@ -15,14 +15,35 @@
     <string name="credential_title_notes">Notes</string>
     <string name="credential_hint_notes">Optionally, add notes to the credential</string>
     <string name="credential_hint_saveNew">Save new credential</string>
-    <!-- End of Credential -->
+    <!-- End of New Credential -->
+
+    <!-- Start of Credential List -->
+    <string name="credential_title_list">Your Secure Vault</string>
+    <string name="credential_list_button_createPass">+ Password</string>
+    <string name="credential_list_button_createTag">+ Tag</string>
+    <string name="credential_hint_update">Update</string>
+    <string name="credential_hint_delete">Delete</string>
+    <string name="credential_hint_alias_update">Current credential alias</string>
+    <string name="credential_hint_user_update">Current credential user</string>
+    <string name="credential_hint_password_update">Current credential password</string>
+    <string name="credential_hint_app_update">Choose an app</string>
+    <string name="credential_hint_notes_update">Current credential notes</string>
+    <!-- End of Credential List -->
+
+    <!-- Start of Credential Modify -->
+    <string name="credential_title_modify">Modify Credential</string>
+    <!-- End of Credential Modify -->
 
     <!-- Start of Dialog App List -->
     <string name="dialogAppList_title">Available Apps</string>
     <string name="dialogAppList_hint_search">Search an app</string>
     <!-- End of Dialog Apps List -->
 
-    <!-- Start of Credential List -->
-    <string name="credential_title_list">Your credentials</string>
-    <!-- End of Credential List -->
+    <!-- Start of Tag Creation -->
+    <string name="tag_creation_title">Create a tag</string>
+    <string name="tag_creation_description">You can picture a password like giving each password its own little personality tag, making them super easy to spot in a sea of logins. Trust me, once you start tagging, you\'ll wonder how you ever managed without it. It\'s like organizing your digital life with a flick of the wrist!</string>
+    <string name="tag_creation_title_name">The name of your new tag</string>
+    <string name="tag_creation__hint_name">Tag name</string>
+    <string name="tag_creation_button_desc">Create tag</string>
+    <!-- End of Tag Creation -->
 </resources>

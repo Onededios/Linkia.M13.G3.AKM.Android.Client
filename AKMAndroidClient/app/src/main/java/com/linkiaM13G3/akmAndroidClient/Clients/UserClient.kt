@@ -6,7 +6,7 @@ import com.linkiaM13G3.akmAndroidClient.DTOs.UserModifyDTO
 import com.linkiaM13G3.akmAndroidClient.DTOs.UserSignInDTO
 import com.linkiaM13G3.akmAndroidClient.DTOs.UserSignUpDTO
 import com.linkiaM13G3.akmAndroidClient.Entities.User
-import java.io.IOException
+import retrofit2.HttpException
 
 private val connection = Connection().userService
 class UserClient {
@@ -14,7 +14,7 @@ class UserClient {
         return try {
             connection.userSignIn(dto)
         }
-        catch (e: IOException) {
+        catch (e: HttpException) {
             Log.e("User", "Error signing in: ${e.message}")
             null
         }
@@ -24,7 +24,7 @@ class UserClient {
         return try {
             connection.userSignUp(dto)
         }
-        catch (e: IOException) {
+        catch (e: HttpException) {
             Log.e("User", "Error signing up: ${e.message}")
             false
         }
@@ -32,10 +32,9 @@ class UserClient {
 
     suspend fun userModifyAsync(dto: UserModifyDTO) : Boolean {
         return try {
-            if (StatusClient().getStatusAsync()) throw IOException("Status check failed")
             connection.userModify(dto)
         }
-        catch (e: IOException) {
+        catch (e: HttpException) {
             Log.e("User", "Error modifying user: ${e.message}")
             false
         }
@@ -44,7 +43,7 @@ class UserClient {
     suspend fun checkUsername(username: String) : Boolean {
         return try {
             connection.checkUsername(username = username)
-        } catch (e: IOException) {
+        } catch (e: HttpException) {
             Log.e("User", "Error checking username: ${e.message}")
             true
         }
@@ -53,7 +52,7 @@ class UserClient {
     suspend fun checkMail(mail: String) : Boolean {
         return try {
             connection.checkMail(mail = mail)
-        } catch (e: IOException) {
+        } catch (e: HttpException) {
             Log.e("User", "Error checking mail: ${e.message}")
             true
         }

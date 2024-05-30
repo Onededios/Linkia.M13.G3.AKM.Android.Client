@@ -1,26 +1,38 @@
 package com.linkiaM13G3.akmAndroidClient.Dialogs
 
 import AdapterAppList
-import android.app.Dialog
 import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.linkiaM13G3.akmAndroidClient.Entities.App
 import com.linkiaM13G3.akmAndroidClient.R
-import androidx.appcompat.widget.SearchView
 
-class DialogSelectApp(private val context: Context, private val appList: List<App>) : DialogFragment() {
+class DialogSelectApp(private val context: Context, private val appList: List<App?>?) : DialogFragment() {
     private lateinit var searchView: SearchView
     private lateinit var recyclerView: RecyclerView
+    private var onDataPassedListener: OnAppPassedListener? = null
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val contentView = LayoutInflater.from(context).inflate(R.layout.dialog_app_list, null)
-        searchView = contentView.findViewById(R.id.srchView_apps)
-        recyclerView = contentView.findViewById(R.id.rvAppList)
+    interface OnAppPassedListener  {
+        fun onAppPassed(app: App?)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        val view = inflater.inflate(R.layout.dialog_app_list, container, false)
+        val adapter = AdapterAppList(context, appList) { app ->
+            run {
+                onDataPassedListener?.onAppPassed(app)
+            }
+            dismiss()
+        }
+
+        searchView = view.findViewById(R.id.srchView_apps)
+        recyclerView = view.findViewById(R.id.rvAppList)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -36,27 +48,31 @@ class DialogSelectApp(private val context: Context, private val appList: List<Ap
         })
 
         recyclerView.layoutManager = LinearLayoutManager(context)
-        updateRecyclerView(appList)
+        recyclerView.adapter = adapter
 
-        return MaterialAlertDialogBuilder(context, R.style.CustomDialogTheme)
-            .setTitle(R.string.credential_hint_app)
-            .setView(contentView)
-            .setPositiveButton("OK") { dialog, which ->
-                // Handle OK button click
-            }
-            .setNegativeButton("Cancel") { dialog, which ->
-                // Handle Cancel button click
-            }
-            .create()
+        return view
     }
-    private fun filterApps(name: String): List<App> {
+
+    fun setOnDataPassedListener(listener: OnAppPassedListener) {
+        onDataPassedListener = listener
+    }
+
+    private fun updateRecyclerView(apps: List<App?>?) {
+        recyclerView.adapter = AdapterAppList(context, apps) { app ->
+            run {
+                onDataPassedListener?.onAppPassed(app)
+            }
+            dismiss()
+        }
+    }
+    private fun filterApps(name: String?): List<App?>? {
+        if (appList.isNullOrEmpty()) return null
         return appList.filter { app ->
-            val appName = app.name.lowercase()
-            appName.contains(name.lowercase())
+            val appName = app?.name?.lowercase()
+            name?.let {
+                appName?.contains(it.lowercase()) ?: false
+            } ?: false
         }
     }
 
-    private fun updateRecyclerView(apps: List<App>?) {
-        recyclerView.adapter = AdapterAppList(context, apps)
-    }
 }

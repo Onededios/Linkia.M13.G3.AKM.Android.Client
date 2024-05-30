@@ -44,8 +44,7 @@ class PageSignIn : AppCompatActivity() {
         }
 
         _btnSignUp.setOnClickListener {
-            val intent = Intent(this, PageSignUp::class.java)
-            startActivity(intent)
+            startActivity(Intent(this, PageCredentials::class.java))
         }
     }
 
@@ -54,7 +53,7 @@ class PageSignIn : AppCompatActivity() {
             val user = _api.userSignInAsync(dto)
             user?.let {
                 UserSingleton.initializeWithUser(it)
-                startActivity(Intent(this@PageSignIn, PageMain::class.java))
+                startActivity(Intent(this@PageSignIn, PageCredentials::class.java))
                 showToast("Login successful")
             } ?: showToast("Invalid username or password")
         } catch (e: Exception) {
