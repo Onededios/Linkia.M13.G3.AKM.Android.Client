@@ -4,22 +4,173 @@
     <shared>
       <config />
     </shared>
+    <layouts>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/dialog_app_list.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/dialog_credential_modify.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/dialog_custom.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_app.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_card_password.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_saved_pwd.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_apps_list.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_creation.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_list.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_main.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_in.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_up.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_tag_creation.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/pages_pwd_list.xml">
+        <config>
+          <theme>@style/Theme.ArmoredKeyManagerAndroidClient</theme>
+        </config>
+      </layout>
+    </layouts>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="cambios para el loggin y la bbdd 2">
+    <list default="true" id="31c61542-99aa-4d0f-89ff-03beaa739eda" name="Changes" comment="Added credential cards and page list">
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/TagClient.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Custom/CustomAppItem.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/DTOs/PasswordCreationDTO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/DTOs/UserModifyDTO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/DTOs/UserSignInDTO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/DTOs/UserSignUpDTO.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Dialogs/DialogModifyCredential.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Dialogs/DialogSelectTags.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/Tag.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Helpers/Updaters.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageTagCreation.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Services/TagService.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/akm_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/baseline_app_registration_24.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/exit_svgrepo_com.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_default.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/dialog_credential_modify.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_tag_creation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetSelector.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/API/Connection.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/API/Connection.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/API/Service.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/API/Service.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Adapters/AdapterAppList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Adapters/AdapterAppList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Adapters/AdapterCredentialList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Adapters/AdapterCredentialList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/AppClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/AppClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/PasswordClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/PasswordClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/StatusClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/StatusClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/UserClient.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Clients/UserClient.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/DTOs/UserDTOs.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Dialogs/DialogSelectApp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Dialogs/DialogSelectApp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/App.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/Entity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/Entity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/Password.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/Password.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/User.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/User.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/UserSingleton.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Entities/UserSingleton.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Helpers/Parsers.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Helpers/Parsers.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/AppsList.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/DatabaseHelper.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageApps.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageApps.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageCredentialCreation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageCredentialCreation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageCredentials.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageCredentials.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageMain.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PagePwdMain.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSavedCredentialList.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignIn.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/PageSignUp.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Pages/SavedCredential.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Services/PasswordService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/java/com/linkiaM13G3/akmAndroidClient/Services/PasswordService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_airbnb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_amazon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_apple.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_facebook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_google.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_huawei.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_instagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_netflix.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_samsung.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_sony.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_spotify.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_tiktok.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_uber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_xbox.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/drawable/logo_youtube.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/dialog_custom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_app.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_app.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_card_password.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_card_password.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/item_saved_pwd.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_apps_list.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_creation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_creation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_list.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_credential_list.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_main.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_in.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_in.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_up.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/page_sign_up.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/layout/pages_pwd_list.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/AKMAndroidClient/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\manuel\.android\avd\Pixel_XL_API_26.avd]" />
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Usuario\.android\avd\Pixel_6_Pro_API_34.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$/AKMAndroidClient">
       <ProjectState />
@@ -28,14 +179,19 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="layoutResourceFile_vertical" />
+        <option value="Kotlin Interface" />
+        <option value="Interface" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="feature/alvaro/maquetacion" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,12 +209,18 @@
       </UrlAndAccount>
     </option>
   </component>
+  <component name="KotlinCodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
   <component name="ProjectId" id="2comRiblSWPDwOn9VUKkUZiVXd0" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -70,18 +232,33 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Android App.app.executor": "Run",
     "PROJECT_TRUSTED_KEY": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "last_opened_file_path": "C:/Users/alvar/Desktop/Repos/Linkia.M13.G3.AKM.Android.Client/AKMAndroidClient/app",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.0",
+    "com.google.services.firebase.aqiPopupShown": "true",
+    "git-widget-placeholder": "feature/joel/integrationAPI",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/repos/Linkia.M13.G3.AKM.Android.Client/AKMAndroidClient/app/src/main/res/drawable",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.17",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\repos\Linkia.M13.G3.AKM.Android.Client\AKMAndroidClient\app\src\main\res\drawable" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\repos\Linkia.M13.G3.AKM.Android.Client\AKMAndroidClient\app\src\main\res\drawable" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App">
       <module name="Armored_Key_Manager_Android_Client.app.main" />
@@ -93,6 +270,7 @@
       <option name="ALL_USERS" value="false" />
       <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
       <option name="CLEAR_APP_STORAGE" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
       <option name="ACTIVITY_EXTRA_FLAGS" value="" />
       <option name="MODE" value="default_activity" />
       <option name="CLEAR_LOGCAT" value="false" />
@@ -187,7 +365,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710174290624</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added credential cards and page list">
+      <option name="closed" value="true" />
+      <created>1716843130238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716843130238</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -216,6 +402,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="cambios para el loggin y la bbdd" />
     <MESSAGE value="cambios para el loggin y la bbdd 2" />
-    <option name="LAST_COMMIT_MESSAGE" value="cambios para el loggin y la bbdd 2" />
+    <MESSAGE value="Added credential cards and page list" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added credential cards and page list" />
   </component>
 </project>

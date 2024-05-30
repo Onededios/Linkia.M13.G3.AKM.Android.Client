@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="grey_50">#FFF5F5F5</color>
+    <color name="grey_100">#FFF0F0F0</color>
+    <color name="grey_200">#FFEEEEEE</color>
+    <color name="grey_300">#FFE0E0E0</color>
+    <color name="grey_400">#FFBDBDBD</color>
+    <color name="grey_500">#FF9E9E9E</color>
+    <color name="grey_600">#FF757575</color>
+    <color name="grey_700">#FF616161</color>
+    <color name="grey_800">#FF424242</color>
+    <color name="grey_900">#FF212121</color>
+    <color name="red">#FFFF0000</color> <!-- Red -->
+    <color name="dark_red">#FF8B0000</color> <!-- Dark Red -->
+    <color name="light_red">#FFFF6666</color> <!-- Light Red -->
+    <color name="crimson">#FFDC143C</color> <!-- Crimson -->
+    <color name="maroon">#FF800000</color> <!-- Maroon -->
 </resources>

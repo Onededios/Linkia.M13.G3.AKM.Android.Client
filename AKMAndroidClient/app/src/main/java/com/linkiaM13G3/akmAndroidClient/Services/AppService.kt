@@ -6,5 +6,5 @@ import retrofit2.http.GET
 
 interface AppService {
     @GET("App/GetApplications")
-    fun getApps(): Call<List<App>>
+    suspend fun getApps(): List<App>?
 }

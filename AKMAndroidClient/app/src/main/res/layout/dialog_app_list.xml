@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10sp">
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/srchView_apps"
+        android:background="@color/grey_400"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10sp"
+        android:iconifiedByDefault="false"
+        android:queryHint="@string/dialogAppList_hint_search"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAppList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:choiceMode="singleChoice"/>
+</LinearLayout>

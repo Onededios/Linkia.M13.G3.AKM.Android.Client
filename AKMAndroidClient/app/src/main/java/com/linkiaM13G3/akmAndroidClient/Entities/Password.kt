@@ -1,11 +1,27 @@
 package com.linkiaM13G3.akmAndroidClient.Entities
 
-import com.google.type.DateTime
 import java.util.UUID
 
-abstract class Password : Entity() {
-    lateinit var id_user: UUID
-    lateinit var password: String
-    var description: String? = null
-    var date_expiration: DateTime? = null
+class Password(
+        id: UUID,
+        var alias: String? = null,
+        var username: String? = null,
+        var password: String,
+        var app: App? = null,
+        var tags: Array<Tag>? = null,
+        var description: String? = null,
+        var date_expiration: String
+) : Entity(id) {
+    fun copy(pass: Password): Password {
+        return Password(
+                pass.id,
+                pass.alias,
+                pass.username,
+                pass.password,
+                pass.app,
+                pass.tags,
+                pass.description,
+                pass.date_expiration
+        )
+    }
 }

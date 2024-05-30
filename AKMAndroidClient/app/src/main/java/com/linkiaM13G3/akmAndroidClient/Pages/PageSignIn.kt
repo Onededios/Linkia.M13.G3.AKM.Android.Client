@@ -1,80 +1,68 @@
 package com.linkiaM13G3.akmAndroidClient.Pages
 
-
-
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputLayout
+import com.linkiaM13G3.akmAndroidClient.Clients.UserClient
+import com.linkiaM13G3.akmAndroidClient.DTOs.UserSignInDTO
+import com.linkiaM13G3.akmAndroidClient.Entities.UserSingleton
+import com.linkiaM13G3.akmAndroidClient.Helpers.Validators
 import com.linkiaM13G3.akmAndroidClient.R
+import kotlinx.coroutines.launch
 
 class PageSignIn : AppCompatActivity() {
-    private lateinit var databaseHelper: DatabaseHelper
+    private var _api = UserClient()
+    private lateinit var _btnSignUp: Button
+    private lateinit var _btnSignIn: Button
+    private lateinit var _user: TextInputLayout
+    private lateinit var _pass: TextInputLayout
 
+    private fun initializeView() {
+        _btnSignUp = findViewById(R.id.buttonSignUp)
+        _btnSignIn = findViewById(R.id.buttonSignIn)
+        _user = findViewById(R.id.textInputLayoutUsername)
+        _pass = findViewById(R.id.textInputLayoutPassword)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_sign_in)
-        databaseHelper = DatabaseHelper.getInstance(this)
+        initializeView()
 
-        val btnForgotPwd = findViewById<Button>(R.id.buttonSignUp)
-        val btnLogin = findViewById<Button>(R.id.buttonSignIn)
-
-
-        val usernameOrEmailInputLayout = findViewById<TextInputLayout>(R.id.textInputLayoutUsername)
-        val passwordInputLayout = findViewById<TextInputLayout>(R.id.textInputLayout)
-
-        btnLogin.setOnClickListener {
-            val emailOrUsername = usernameOrEmailInputLayout.editText?.text.toString().trim()
-            val password = passwordInputLayout.editText?.text.toString().trim()
-
-            val userId = databaseHelper.getUserIdForLogin(emailOrUsername, password)
-            if (userId != -1) {
-                Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show()
-
-
-                val sharedPreferences = getSharedPreferences("miApp", Context.MODE_PRIVATE)
-                val editor = sharedPreferences.edit()
-                editor.putInt("userId", userId)
-                editor.apply()
-
-
-                startActivity(Intent(this, PageMain::class.java))
-            } else {
-                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show()
-            }
+        _btnSignIn.setOnClickListener {
+            val user = _user.editText?.text.toString().trim()
+            val password = _pass.editText?.text.toString().trim()
+            if (Validators.validateUser(user)) {
+                lifecycleScope.launch {
+                    goSignIn(UserSignInDTO(username = user, password = password))
+                }
+            } else showToast("Your login is not valid")
         }
 
-        btnForgotPwd.setOnClickListener {
-
-            val intent = Intent(this, PageSignUp::class.java)
-            startActivity(intent)
+        _btnSignUp.setOnClickListener {
+            startActivity(Intent(this, PageCredentials::class.java))
         }
+    }
+
+    private suspend fun goSignIn(dto: UserSignInDTO) {
+        try {
+            val user = _api.userSignInAsync(dto)
+            user?.let {
+                UserSingleton.initializeWithUser(it)
+                startActivity(Intent(this@PageSignIn, PageCredentials::class.java))
+                showToast("Login successful")
+            } ?: showToast("Invalid username or password")
+        } catch (e: Exception) {
+            Log.e("SignIn", "Sign in error", e)
+            showToast("Sign in error: ${e.localizedMessage}")
+        }
+    }
+
+    private fun showToast(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 }
-/*
-    private fun validateEmailOrUsername(input: String, inputLayout: TextInputLayout): Boolean {
-        return if (input.isEmpty()) {
-            inputLayout.error = "Field cannot be empty"
-            false
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(input).matches() && !input.matches(Regex("^[a-zA-Z0-9._-]{3,}$"))) {
-            inputLayout.error = "Enter a valid email or username"
-            false
-        } else {
-            inputLayout.error = null
-            true
-        }
-    }
-
-    private fun validatePassword(password: String, inputLayout: TextInputLayout): Boolean {
-        return if (password.length < 6) {
-            inputLayout.error = "Password must be at least 6 characters"
-            false
-        } else {
-            inputLayout.error = null
-            true
-        }
-    }
-    */
