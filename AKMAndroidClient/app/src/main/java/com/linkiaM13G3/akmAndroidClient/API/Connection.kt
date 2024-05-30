@@ -8,8 +8,6 @@ import com.linkiaM13G3.akmAndroidClient.Services.UserService
 
 const val protocol: String = "https:"
 const val url: String = "x79411h5-7189.uks1.devtunnels.ms"
-//const val port = "8182"
-//val mainUrl = listOf(url, port).joinToString(":")
 val mainUrl = url
 val fullUrl = listOf(protocol, "", mainUrl, "").joinToString("/")
 
