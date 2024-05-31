@@ -42,22 +42,6 @@ class PageCredentials: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        lifecycleScope.launch {
-            val fetchedApps = fetchApps()
-            _allApps = if (fetchedApps != null) {
-                noApp + fetchedApps
-            } else {
-                noApp
-            }
-
-            Toast.makeText(baseContext, "Retreived ${_allApps?.size} apps", Toast.LENGTH_SHORT).show()
-        }
-
-        lifecycleScope.launch {
-            _allTags = fetchTags()
-            Toast.makeText(baseContext, "Retreived ${_allTags?.size} tags", Toast.LENGTH_SHORT).show()
-        }
-
         setContentView(R.layout.page_credential_list)
         initComponents()
         setupRecyclerView()
@@ -79,6 +63,17 @@ class PageCredentials: AppCompatActivity() {
     private fun setupRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         lifecycleScope.launch {
+            val fetchedApps = fetchApps()
+            _allApps = if (fetchedApps != null) {
+                noApp + fetchedApps
+            } else {
+                noApp
+            }
+            Toast.makeText(baseContext, "Retreived ${_allApps?.size} apps", Toast.LENGTH_SHORT).show()
+
+            _allTags = fetchTags()
+            Toast.makeText(baseContext, "Retreived ${_allTags?.size} tags", Toast.LENGTH_SHORT).show()
+
             credentials = _apiPassword.fetchUserPasswords()
             Toast.makeText(baseContext, "Retreived ${credentials?.size} credentials", Toast.LENGTH_SHORT).show()
             updateRecyclerView(credentials)
