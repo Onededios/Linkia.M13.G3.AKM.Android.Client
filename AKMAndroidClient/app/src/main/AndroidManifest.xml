@@ -27,6 +27,7 @@
         <activity android:name=".Pages.PageCredentialCreation"/>
         <activity android:name=".Pages.PageCredentials"/>
         <activity android:name=".Pages.PageSignUp"/>
+        <activity android:name=".Pages.PageTagCreation"/>
     </application>
 
 </manifest>

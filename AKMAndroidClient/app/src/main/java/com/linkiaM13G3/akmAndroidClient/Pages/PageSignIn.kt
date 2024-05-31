@@ -44,7 +44,7 @@ class PageSignIn : AppCompatActivity() {
         }
 
         _btnSignUp.setOnClickListener {
-            startActivity(Intent(this, PageCredentials::class.java))
+            startActivity(Intent(this, PageSignUp::class.java))
         }
     }
 

@@ -30,6 +30,8 @@ class PageTagCreation : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.page_tag_creation)
 
+        initView()
+
         buttonReturn.setOnClickListener {
             startActivity(Intent(this, PageCredentials::class.java))
         }
@@ -53,6 +55,7 @@ class PageTagCreation : AppCompatActivity() {
                     _api.createTag(Tag(tagname, UserSingleton.id))
                     delay(2500)
                 }
+                startActivity(Intent(this, PageCredentials::class.java))
             }
         }
     }

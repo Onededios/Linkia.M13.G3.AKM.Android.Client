@@ -32,7 +32,7 @@ class PageSignUp : AppCompatActivity() {
     private lateinit var _tilRPass: TextInputLayout
     private lateinit var _arrayCCodes: Array<String>
     private fun initializeView() {
-        _btnReturn = findViewById(R.id.btnReturnFromCredentialList)
+        _btnReturn = findViewById(R.id.buttonReturnCreateNewUser)
         _tilFName = findViewById(R.id.textInputFName)
         _btnSignUp = findViewById(R.id.buttonSignUp)
         _tilLName = findViewById(R.id.textInputLName)
